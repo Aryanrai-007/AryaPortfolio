@@ -1,20 +1,42 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { createRenderer } from "./optimized-black-hole-utils/renderer";
+import BlackHoleHeroSection from "./blackhole-hero-section";
 
-/** Standalone host for the optimized black-hole renderer. */
+/**
+ * Compatibility wrapper for the portfolio hero.
+ * The landing page already imports this component, so swapping the renderer
+ * here lets the new cinematic WebGL black hole drop into the existing layout
+ * without changing the rest of the page.
+ */
 export function Example() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isReady, setIsReady] = useState(false);
-  useEffect(() => {
-    let cancelled = false;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const renderer = createRenderer({ canvas });
-    void renderer.ready.then(() => { if (!cancelled) setIsReady(true); });
-    return () => { cancelled = true; renderer.dispose(); };
-  }, []);
-  return <div className="relative h-full w-full overflow-hidden bg-black"><canvas ref={canvasRef} className={`block h-full w-full touch-none transition-opacity duration-500 ${isReady ? "opacity-100" : "opacity-0"}`} /></div>;
+  return (
+    <BlackHoleHeroSection
+      distance={24}
+      elevation={-5.5}
+      azimuth={0}
+      orbitSpeed={0}
+      roll={-20}
+      fov={42}
+      diskInner={3}
+      diskOuter={15}
+      diskThickness={0.26}
+      diskDensity={1}
+      brightness={1.35}
+      spinSpeed={0.06}
+      grain={0.48}
+      doppler={0.35}
+      starBrightness={0.35}
+      glow={1.2}
+      exposure={1}
+      vignette={0.18}
+      steps={300}
+      resolution={0.78}
+      maxDpr={1.75}
+      focus={[0.72, 0.46]}
+      scrim="left"
+      scrimStrength={0.72}
+    />
+  );
 }
+
 export default Example;
