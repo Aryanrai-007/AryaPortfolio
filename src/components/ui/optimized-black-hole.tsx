@@ -1,41 +1,22 @@
 "use client";
 
-import BlackHoleHeroSection from "./blackhole-hero-section";
-
 /**
- * Compatibility wrapper for the portfolio hero.
- * The landing page already imports this component, so swapping the renderer
- * here lets the new cinematic WebGL black hole drop into the existing layout
- * without changing the rest of the page.
+ * Cinematic black-hole media layer for the portfolio hero.
+ * Uses NASA's published edge-on accretion-disk visualization rather than a
+ * WebGL UI component. The black background is intentionally allowed to merge
+ * into the surrounding pitch-black hero.
  */
 export function Example() {
   return (
-    <BlackHoleHeroSection
-      distance={24}
-      elevation={-5.5}
-      azimuth={0}
-      orbitSpeed={0}
-      roll={-20}
-      fov={42}
-      diskInner={3}
-      diskOuter={15}
-      diskThickness={0.26}
-      diskDensity={1}
-      brightness={1.35}
-      spinSpeed={0.06}
-      grain={0.48}
-      doppler={0.35}
-      starBrightness={0.35}
-      glow={1.2}
-      exposure={1}
-      vignette={0.18}
-      steps={300}
-      resolution={0.78}
-      maxDpr={1.75}
-      focus={[0.72, 0.46]}
-      scrim="left"
-      scrimStrength={0.72}
-    />
+    <div className="relative h-full w-full overflow-hidden bg-transparent">
+      <img
+        src="https://svs.gsfc.nasa.gov/vis/a010000/a013300/a013326/BH_AccretionDisk_Sim_Stationary.gif"
+        alt=""
+        aria-hidden="true"
+        className="black-hole-media absolute left-1/2 top-1/2 h-full w-full max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+        draggable={false}
+      />
+    </div>
   );
 }
 
