@@ -1,8 +1,10 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { KageLandingPage } from "@designcodeio/threeui";
 import "@designcodeio/threeui/style.css";
 import "./styles.css";
 
-export function Scene() {
+function Scene() {
   return (
     <div className="shader-frame">
       <KageLandingPage
@@ -18,3 +20,9 @@ export function Scene() {
     </div>
   );
 }
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <Scene />
+  </React.StrictMode>
+);
