@@ -1,5 +1,6 @@
 import { KageLandingPage } from "@designcodeio/threeui";
 import "@designcodeio/threeui/style.css";
+import "./styles.css";
 
 export function Scene() {
   return (
