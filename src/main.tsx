@@ -1,3 +1,4 @@
+import ReactDOM from "react-dom/client";
 import { useRef } from "react";
 import type { PointerEvent as ReactPointerEvent, ReactNode } from "react";
 import { LiquidMetalButton, TempleNightScene } from "@designcodeio/threeui";
@@ -299,4 +300,5 @@ function App() {
   );
 }
 
-export default App;
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+
