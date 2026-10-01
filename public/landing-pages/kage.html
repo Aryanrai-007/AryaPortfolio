@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kage — Where stillness reveals the unseen</title>
-<meta name="description" content="A five-chapter night walk through a Kyoto mountain temple. Charred cypress, lantern light and a vermilion moon, rendered live in WebGL.">
+<title>Aryan Rai — AI Builder · Developer · Founder, CodeBlooded</title>
+<meta name="description" content="Portfolio of Aryan Rai, AI Builder, Software Developer, and Founder of CodeBlooded. Building AI agents, intelligent systems, and interactive products.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070a'/%3E%3Ccircle cx='16' cy='17' r='8' fill='%23e0231c'/%3E%3Crect x='4' y='8' width='24' height='2.6' fill='%23dfe7e0'/%3E%3Crect x='7' y='13' width='18' height='2' fill='%23dfe7e0'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="secret-pathways-assets/fonts.css">
 <style>
@@ -48,7 +48,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 #grain{
   position:fixed; inset:-1px; z-index:60; pointer-events:none;
-  opacity:.055; mix-blend-mode:overlay;
+  opacity:.04; mix-blend-mode:overlay;
   background-repeat:repeat; background-size:180px 180px;
 }
 #vignette{
@@ -62,7 +62,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
   color:var(--bone-dim); text-shadow:0 1px 16px rgba(3,6,8,.9);
 }
-.jp{ font-family:'NotoJP','Onest',sans-serif; font-weight:400; }
+.jp, [lang="hi"], [lang="ja"], .deva{
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-size: 0.7em !important;
+  letter-spacing: 0.15em !important;
+  text-transform: none !important;
+  font-style: normal !important;
+  opacity: 0.85;
+}
 h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .display{
   text-transform:uppercase; line-height:1.055; letter-spacing:-.012em;
@@ -127,9 +134,9 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
    frame, for as long as the blur took to fade. */
 .nav::before{
   content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:rgba(5,7,10,.62);
-  backdrop-filter:blur(14px) saturate(1.1); -webkit-backdrop-filter:blur(14px) saturate(1.1);
-  opacity:0; transition:opacity .5s linear;
+  background:rgba(5,7,10,.96);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  opacity:1; transition:opacity .5s linear;
 }
 .nav.stuck::before{ opacity:1; }
 .nav::after{
@@ -141,15 +148,15 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .brand{ display:flex; align-items:center; gap:11px; flex:0 0 auto; }
 .brand svg{ width:34px; height:34px; display:block; }
 .brand-tx{ display:flex; flex-direction:column; line-height:1; gap:3px; }
-.brand-tx b{ font-size:12px; font-weight:500; letter-spacing:.26em; }
-.brand-tx i{ font-style:normal; font-size:8px; letter-spacing:.34em; color:var(--muted); }
+.brand-tx b{ font-size:13px; font-weight:600; letter-spacing:.22em; color:var(--bone); }
+.brand-tx i{ font-style:normal; font-size:10px; letter-spacing:.24em; color:var(--bone-dim); }
 .nav-links{ display:flex; gap:clamp(18px,2.6vw,46px); margin-left:auto; }
 .nav-link{
-  position:relative; font-size:11px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--bone-dim); display:block; height:15px; line-height:15px; overflow:hidden;
+  position:relative; font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--bone); display:block; height:18px; line-height:18px; overflow:hidden;
 }
-.nav-link span{ display:block; height:15px; line-height:15px; transition:transform .55s var(--ease-out), color .3s; }
-.nav-link .alt{ position:absolute; inset:0; transform:translate3d(0,100%,0); color:var(--bone); letter-spacing:.32em; }
+.nav-link span{ display:block; height:18px; line-height:18px; transition:transform .55s var(--ease-out), color .3s; }
+.nav-link .alt{ position:absolute; inset:0; transform:translate3d(0,100%,0); color:var(--bone); letter-spacing:0 !important; }
 .nav-link:hover span{ transform:translate3d(0,-100%,0); }
 .nav-link:hover .alt{ transform:none; }
 .nav-link.on{ color:var(--bone); }
@@ -161,67 +168,302 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .nav-burger:hover i:nth-child(2){ width:26px; }
 .nav-burger:hover i:nth-child(1){ width:17px; }
 
+/* Circular Music Component */
+.nav-audio-circle {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 16, 0.75);
+  border: 1px solid var(--line-soft);
+  margin-left: clamp(12px, 1.8vw, 22px);
+  color: var(--bone);
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-audio-circle:hover {
+  border-color: rgba(224, 35, 28, 0.55);
+  background: rgba(224, 35, 28, 0.08);
+  transform: scale(1.06);
+}
+
+.nav-audio-circle.playing {
+  border-color: var(--vermilion);
+  box-shadow: 0 0 16px rgba(224, 35, 28, 0.35);
+  background: rgba(224, 35, 28, 0.12);
+}
+
+.audio-circle-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-circle-kanji {
+  position: absolute;
+  color: var(--bone);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-audio-circle:hover .audio-circle-kanji {
+  color: var(--vermilion);
+}
+
+.nav-audio-circle.playing .audio-circle-kanji {
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+}
+
+.audio-circle-bars {
+  position: absolute;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  height: 14px;
+  width: 14px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.nav-audio-circle.playing .audio-circle-bars {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.audio-circle-bars i {
+  width: 2.5px;
+  height: 4px;
+  background: var(--vermilion);
+  border-radius: 1px;
+}
+
+.nav-audio-circle.playing .audio-circle-bars i:nth-child(1) {
+  animation: eq-dance-1 0.85s ease-in-out infinite alternate;
+}
+.nav-audio-circle.playing .audio-circle-bars i:nth-child(2) {
+  animation: eq-dance-2 0.75s ease-in-out infinite alternate 0.15s;
+}
+.nav-audio-circle.playing .audio-circle-bars i:nth-child(3) {
+  animation: eq-dance-3 0.95s ease-in-out infinite alternate 0.3s;
+}
+
+@keyframes eq-dance-1 {
+  0% { height: 4px; }
+  100% { height: 13px; }
+}
+
+@keyframes eq-dance-2 {
+  0% { height: 13px; }
+  100% { height: 5px; }
+}
+
+@keyframes eq-dance-3 {
+  0% { height: 5px; }
+  100% { height: 14px; }
+}
+
 /* ============================================================= hero */
 .hero{ position:relative; min-height:100svh; padding:0 var(--pad); display:flex; flex-direction:column; }
+.sec, .hero{ scroll-margin-top:calc(var(--nav-h) + 24px); }
 .hero::before{ content:''; position:absolute; left:0; right:0; top:0; height:46%; pointer-events:none;
-  background:linear-gradient(rgba(3,6,9,.72), rgba(3,6,9,.34) 46%, transparent); }
-.hero-top{ padding-top:calc(var(--nav-h) + clamp(12px,2.6vh,34px)); max-width:min(560px,46vw); position:relative; z-index:2; }
-.hero-top .eyebrow{ display:flex; align-items:center; gap:10px; margin-bottom:20px; }
-.hero-top .eyebrow .dot{ width:5px; height:5px; border-radius:50%; background:var(--vermilion); box-shadow:0 0 10px var(--vermilion); }
-.hero h1{ margin-bottom:18px; }
-.hero-sub{ max-width:322px; text-shadow:0 1px 26px rgba(3,6,8,.95); }
-.hero-spacer{ flex:1 1 auto; min-height:clamp(140px,26vh,300px); }
-.hero-foot{ padding-bottom:clamp(22px,4.2vh,42px); position:relative; z-index:2; }
-.hero-cue{ display:flex; align-items:center; justify-content:flex-end; gap:12px; margin-bottom:14px;
-  font-size:9px; letter-spacing:.3em; text-transform:uppercase; color:var(--muted); }
-.hero-cue .track{ width:54px; height:1px; background:var(--line); position:relative; overflow:hidden; }
-.hero-cue .track i{ position:absolute; inset:0; background:var(--bone); transform-origin:left;
-  animation:cue 2.8s var(--ease-io) infinite; }
+  background:linear-gradient(rgba(3,6,9,.85), rgba(3,6,9,.40) 50%, transparent); }
+.hero-top{ padding-top:calc(var(--nav-h) + clamp(8px,1.5vh,20px)); max-width:min(620px,52vw); position:relative; z-index:20; }
+.hero-top .eyebrow{ display:flex; align-items:center; gap:10px; margin-bottom:6px; font-size:12px; font-weight:500; letter-spacing:.22em; color:#d0ded3; text-shadow:0 2px 14px rgba(0,0,0,.95); }
+.hero-top .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--vermilion); box-shadow:0 0 10px var(--vermilion); }
+.tagline {
+  font-size: clamp(14px, 1.25vw, 17px);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: #d0ded3;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  opacity: 0.92;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.95);
+}
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border: 1px solid rgba(224, 35, 28, 0.6);
+  background: rgba(5, 7, 10, 0.65);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  box-shadow: 0 0 20px rgba(224, 35, 28, 0.4);
+  transform: translateY(-2px);
+}
+.hero-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 10px;
+  font-family: monospace, sans-serif;
+  letter-spacing: 0.25em;
+  color: #8f9a93;
+  text-transform: uppercase;
+}
+
+.hero-spacer{ flex:1 1 auto; min-height:40px; }
+.hero-foot{
+  position: absolute;
+  left: var(--pad);
+  bottom: clamp(24px, 4vh, 40px);
+  z-index: 25;
+  padding-bottom: 0;
+}
+.hero-cue{ display:none; }
 .chapters{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2.4vw,40px);
-  border-top:1px solid var(--line-soft); padding-top:18px;
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 3.2vw, 48px);
+  border-top: none;
+  padding-top: 0;
 }
-.chip{ display:flex; gap:14px; align-items:flex-start; cursor:pointer; }
-.chip .num{ line-height:1; flex:0 0 auto; transition:color .4s, transform .5s var(--ease-out); }
-.chip .tx{ min-width:0; padding-top:3px; }
-.chip b{ display:block; font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--bone-dim); margin-bottom:6px; transition:color .4s;
-  text-shadow:0 1px 16px rgba(3,6,8,.9); }
-.chip p{ margin:0; font-size:11px; line-height:1.5; color:#7d8781; max-width:22ch;
-  transition:color .4s; }
-.chip:hover .num{ color:var(--ember); transform:translate3d(0,-2px,0); }
-.chip:hover b{ color:var(--bone); }
-.chip:hover p{ color:var(--bone-dim); }
-.chip.on .num{ color:var(--ember); }
-.chip.on b{ color:var(--bone); }
-/* the floating window: a generated Sanmon still carried over the hero */
+.chip{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 6px;
+  transition: all 0.3s ease;
+}
+.chip .num{
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(223, 231, 224, 0.4);
+  font-family: monospace, sans-serif;
+  transition: color 0.3s ease;
+}
+.chip .tx b{
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(223, 231, 224, 0.5);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.chip p{ display: none; }
+.chip:hover .num, .chip:hover b{ color: var(--bone); }
+.chip.on .num, .chip.on b{
+  color: #ffffff;
+  font-weight: 500;
+}
+.chip.on::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--vermilion);
+  box-shadow: 0 0 10px var(--vermilion);
+}
+
+/* bottom-right youtube preview card */
 .peek{
-  position:absolute; z-index:2; right:clamp(78px,11vw,190px); top:clamp(132px,25vh,238px);
-  width:clamp(150px,16vw,262px); display:block;
-  transition:transform .8s var(--ease-out);
+  position: absolute;
+  right: var(--pad);
+  bottom: clamp(24px, 4vh, 40px);
+  top: auto;
+  left: auto;
+  z-index: 65;
+  width: clamp(180px, 14vw, 230px);
+  display: block;
+  transition: transform 0.4s var(--ease-out);
 }
-.peek-fr{ display:block; aspect-ratio:16/10;
-  background:linear-gradient(180deg, rgba(3,6,9,.04) 24%, rgba(3,6,9,.48) 100%),
+.peek-fr{
+  position: relative;
+  display: block;
+  aspect-ratio: 16/10;
+  background: linear-gradient(180deg, rgba(3,6,9,.04) 24%, rgba(3,6,9,.55) 100%),
     url('secret-pathways-assets/generated/kage-sanmon-preview.webp') center / cover no-repeat;
-  outline:1px solid rgba(223,231,224,.16); outline-offset:-1px;
-  box-shadow:0 34px 70px -30px rgba(0,0,0,.9); transition:outline-color .5s; }
-.peek:hover{ transform:translate3d(0,-5px,0); }
-.peek:hover .peek-fr{ outline-color:rgba(223,231,224,.42); }
-.peek-play{ position:absolute; top:0; right:0; left:0; bottom:auto; aspect-ratio:16/10;
-  display:grid; place-items:center; pointer-events:none; }
-.peek-play svg{ width:clamp(30px,3.2vw,46px); height:auto; filter:drop-shadow(0 2px 12px rgba(0,0,0,.7));
-  transition:transform .55s var(--ease-out); }
-.peek:hover .peek-play svg{ transform:scale(1.14); }
-.peek-cap{ display:flex; align-items:baseline; gap:9px; margin-top:9px; }
-.peek-cap b{ font-size:11px; font-weight:400; letter-spacing:.24em; color:var(--bone-dim); }
-.peek-cap i{ font-style:normal; font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
-@media (max-width:820px){ .peek{ display:none; } }
+  outline: 1px solid rgba(223,231,224,.22);
+  outline-offset: -1px;
+  border-radius: 6px;
+  box-shadow: 0 16px 40px -15px rgba(0,0,0,.9);
+  transition: outline-color 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+}
+.peek:hover .peek-fr{
+  outline-color: rgba(224, 35, 28, 0.7);
+  box-shadow: 0 0 25px rgba(224, 35, 28, 0.4), 0 20px 40px rgba(0,0,0,0.9);
+}
+.peek-play{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.peek-play svg{
+  width: clamp(28px, 2.8vw, 36px);
+  height: auto;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,.8));
+  transition: transform 0.4s var(--ease-out);
+}
+.peek:hover .peek-play svg{ transform: scale(1.18); }
+.peek-cap{ display: flex; align-items: center; gap: 6px; margin-top: 8px; white-space: nowrap; }
+.peek-cap b{ font-size: 10px; color: var(--vermilion); flex-shrink: 0; }
+.peek-cap i{
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c0ccc3;
+  font-family: monospace, sans-serif;
+  white-space: nowrap;
+}
+@media (max-width:820px){
+  .peek{ display: flex; position: static; margin-top: 16px; width: 100%; max-width: 280px; }
+}
 
 .hero-side{
-  position:absolute; z-index:2; right:var(--pad); top:50%; transform:translateY(-50%);
-  display:flex; flex-direction:column; align-items:center; gap:14px; pointer-events:none;
+  position:absolute; z-index:5; right:clamp(16px,2.2vw,36px); top:50%; transform:translateY(-50%);
+  font-size:10px; opacity:.75; pointer-events:none;
 }
-.hero-side .v{ writing-mode:vertical-rl; font-size:13px; letter-spacing:.62em; color:rgba(223,231,224,.5); }
+.hero-side .v{ writing-mode:vertical-rl; font-size:11px; letter-spacing:.35em; color:rgba(223,231,224,.6); }
 @keyframes cue{ 0%{transform:scaleX(0)} 42%{transform:scaleX(1)} 100%{transform:scaleX(1) translateX(100%)} }
 
 /* ============================================================= sections */
@@ -268,34 +510,34 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .gate-stats div span{ font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
 
 /* — chapter II: pathways cards */
-.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,1.4vw,22px); align-items:start; }
+.cards{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(20px,2.5vw,36px); align-items:start; position:relative; z-index:25 !important; }
 .card{ position:relative; cursor:pointer; }
-.card:nth-child(1){ transform:translateY(0); }
-.card:nth-child(2){ transform:translateY(clamp(26px,5vw,74px)); }
-.card:nth-child(3){ transform:translateY(clamp(52px,10vw,148px)); }
-/* the frame is a hole punched in the page — the scene is rendered straight
-   into this rectangle with a scissored viewport, so each card is a live
-   window onto a different corner of the sanctuary */
+.card:nth-child(1), .card:nth-child(2), .card:nth-child(3), .card:nth-child(4){ transform:none; }
 .card-fr{
-  position:relative; aspect-ratio:4/5; background:transparent;
-  outline:1px solid var(--line-soft); outline-offset:-1px;
-  transition:outline-color .5s var(--ease);
+  position:relative; aspect-ratio:16/9.5; background-color:#080e14;
+  outline:1px solid var(--line-soft); outline-offset:-1px; border-radius:8px; overflow:hidden;
+  transition:outline-color .5s var(--ease), box-shadow .5s var(--ease);
 }
-.card:hover .card-fr{ outline-color:rgba(223,231,224,.30); }
+.card:hover .card-fr{ outline-color:rgba(224, 35, 28, 0.6); box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(224,35,28,0.2); }
 .card:nth-child(1) .card-fr{
   background:
-    linear-gradient(180deg,rgba(3,6,9,.04) 36%,rgba(3,6,9,.72) 100%),
-    url('secret-pathways-assets/generated/kage-approach.webp') center / cover no-repeat;
+    linear-gradient(180deg,rgba(3,6,9,.02) 40%,rgba(3,6,9,.65) 100%),
+    url('secret-pathways-assets/generated/kage-logicure.webp') center / 100% 100% no-repeat;
 }
 .card:nth-child(2) .card-fr{
   background:
-    linear-gradient(180deg,rgba(3,6,9,.06) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-lantern-court.webp') center / cover no-repeat;
+    linear-gradient(180deg,rgba(3,6,9,.02) 40%,rgba(3,6,9,.65) 100%),
+    url('secret-pathways-assets/generated/kage-mayavihin.webp') center / 100% 100% no-repeat;
 }
 .card:nth-child(3) .card-fr{
   background:
-    linear-gradient(180deg,rgba(3,6,9,.05) 36%,rgba(3,6,9,.74) 100%),
-    url('secret-pathways-assets/generated/kage-moonwater.webp') center / cover no-repeat;
+    linear-gradient(180deg,rgba(3,6,9,.02) 40%,rgba(3,6,9,.65) 100%),
+    url('secret-pathways-assets/generated/kage-synqro.webp') center / 100% 100% no-repeat;
+}
+.card:nth-child(4) .card-fr{
+  background:
+    linear-gradient(180deg,rgba(3,6,9,.02) 40%,rgba(3,6,9,.65) 100%),
+    url('secret-pathways-assets/generated/kage-satqueryx.webp') center / 100% 100% no-repeat;
 }
 .card-fr::after{ content:''; position:absolute; inset:0;
   background:linear-gradient(transparent 46%, rgba(4,6,9,.80)); pointer-events:none; }
@@ -364,9 +606,9 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
   background-attachment:fixed; }
 .no-webgl .peek-fr{ background:linear-gradient(160deg,#162326,#0b1013 55%,#241010); }
 .no-webgl .word-fb{
-  display:block; position:absolute; left:0; right:0; bottom:16%; z-index:1;
-  font-family:'Wordmark','Onest',sans-serif; font-weight:600; font-size:21.4vw; line-height:.78;
-  letter-spacing:.052em; text-align:center; pointer-events:none;
+  display:block; position:absolute; left:0; right:0; bottom:10%; z-index:1;
+  font-family:'Wordmark','Onest',sans-serif; font-weight:600; font-size:clamp(8rem, 20vw, 24rem); line-height:.78;
+  letter-spacing:.032em; text-align:center; pointer-events:none; white-space:nowrap;
   background:linear-gradient(#e2ece5, #97a89c); -webkit-background-clip:text; background-clip:text;
   color:transparent;
 }
@@ -387,37 +629,450 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .card-meta{ display:flex; justify-content:space-between; margin-top:12px;
   font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
 
-/* — chapter III: curriculum */
-.cur-head{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.72fr); gap:clamp(28px,5vw,90px); align-items:end; margin-bottom:clamp(34px,6vh,72px); }
-.cur-head h2{ max-width:13ch; }
-.cur{ border-top:1px solid var(--line-soft); }
-.les{
-  position:relative; display:grid; align-items:center;
-  grid-template-columns:64px minmax(0,1.05fr) minmax(0,1.25fr) 86px;
-  gap:clamp(14px,2.4vw,40px);
-  padding:clamp(20px,2.4vw,30px) 0; border-bottom:1px solid var(--line-soft);
-  cursor:pointer; transition:padding .5s var(--ease-out);
+/* — chapter III: community & codeblooded */
+#lessons{ padding-bottom:clamp(90px,14vh,180px) !important; position:relative; }
+.fg, .fg-el{ pointer-events:none !important; z-index:1 !important; }
+.cur-head, .cur, .sec-head, .gate-grid, .cards, .cb-card-wrapper{ position:relative; z-index:25 !important; }
+
+/* =================================================== CodeBlooded Single Wide Card */
+.cb-card-wrapper {
+  position: relative;
+  z-index: 25 !important;
+  perspective: 1000px;
+  width: 100%;
+  margin-top: 10px;
 }
-.les::before{ content:''; position:absolute; left:calc(var(--pad) * -1); right:0; top:0; bottom:0;
-  background:linear-gradient(90deg, rgba(224,35,28,.09), transparent 46%);
-  opacity:0; transition:opacity .55s var(--ease); pointer-events:none; }
-.les:hover::before{ opacity:1; }
-.les:hover{ padding-left:clamp(8px,1.2vw,18px); }
-.les .k{ font-size:11px; letter-spacing:.16em; color:var(--muted); font-variant-numeric:tabular-nums; transition:color .4s; }
-.les:hover .k{ color:var(--vermilion); }
-.les h3{ font-size:clamp(16px,1.5vw,23px); font-weight:400; letter-spacing:-.005em; }
-.les h3 em{ font-style:normal; font-family:'NotoJP',sans-serif; font-size:.72em; color:var(--muted); margin-left:12px; letter-spacing:.24em; }
-.les p{ margin:0; font-size:13px; line-height:1.6; color:#909b95; text-shadow:0 1px 16px rgba(3,6,8,.92); }
-.les .t{ text-align:right; font-size:11px; letter-spacing:.14em; color:#8b958f; font-variant-numeric:tabular-nums; text-shadow:0 1px 16px rgba(3,6,8,.92); }
-.les .bar{ position:absolute; left:0; bottom:-1px; height:1px; width:100%; background:var(--vermilion);
-  transform:scaleX(0); transform-origin:left; transition:transform .7s var(--ease-out); }
-.les:hover .bar{ transform:scaleX(1); }
+
+.cb-card {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  height: clamp(380px, 40vh, 420px);
+  background: rgba(8, 12, 16, 0.90);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: clamp(28px, 3.5vw, 48px);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: border-color 0.4s var(--ease);
+  will-change: transform;
+  overflow: hidden;
+  cursor: default;
+}
+
+.cb-card:hover {
+  border-color: rgba(224, 35, 28, 0.35);
+}
+
+.cb-card-left {
+  transform: translateZ(30px);
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.cb-card-right {
+  transform: translateZ(50px);
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  z-index: 2;
+}
+
+.cb-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--vermilion);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cb-tag .red-dot {
+  color: var(--vermilion);
+  font-size: 9px;
+  line-height: 1;
+}
+
+.cb-title {
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 400;
+  color: var(--bone);
+  font-family: 'Onest', sans-serif;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px 0;
+  line-height: 1.2;
+}
+
+.cb-body {
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.6;
+  color: #a0acb5;
+  max-width: 48ch;
+  margin: 0 0 24px 0;
+  font-weight: 300;
+}
+
+.cb-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.cb-meta-row span i {
+  font-style: normal;
+  color: var(--bone);
+  opacity: 0.85;
+}
+
+.cb-meta-row .sep {
+  width: 1px;
+  height: 12px;
+  background: var(--line-soft);
+  display: inline-block;
+}
+
+.cb-links-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cb-ghost-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-decoration: none;
+  background: transparent;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.cb-ghost-link:hover {
+  border-color: var(--bone);
+  color: #ffffff;
+}
+
+.cb-logo-img {
+  max-height: 270px;
+  width: auto;
+  max-width: 85%;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 85%);
+  mask-image: radial-gradient(circle at center, black 50%, transparent 85%);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .cb-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    height: auto;
+    padding: 28px 20px;
+    gap: 24px;
+    transform: none !important;
+  }
+  .cb-card-left {
+    order: 2;
+    transform: none !important;
+  }
+  .cb-card-right {
+    order: 1;
+    height: 180px;
+    transform: none !important;
+  }
+  .cb-logo-img {
+    max-height: 180px;
+  }
+  .cb-links-row {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .cb-ghost-link {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.cur-head{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.72fr); gap:clamp(28px,5vw,90px); align-items:end; margin-bottom:clamp(34px,6vh,60px); }
+.cur-head h2{ max-width:14ch; }
+.cur{ border-top:1px solid var(--line-soft); display:flex; flex-direction:column; gap:24px; padding-top:24px; }
+
+.les-spotlight{
+  position:relative; display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,0.85fr); gap:clamp(24px,3vw,40px);
+  padding:clamp(24px,3vw,40px); background:rgba(10,14,18,.82); border:1px solid var(--line);
+  border-radius:8px; transition:all .4s var(--ease-out);
+}
+.les-spotlight:hover{ border-color:rgba(224,35,28,.55); background:rgba(16,22,28,.95); box-shadow:0 12px 40px rgba(0,0,0,.6); }
+.les-main{ display:flex; flex-direction:column; justify-content:space-between; }
+.k-label{ font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--vermilion); margin-bottom:8px; display:block; }
+.les-title{ font-size:clamp(20px,2.2vw,30px); font-weight:400; letter-spacing:-.01em; margin:4px 0 12px; color:var(--bone); }
+.les-title .jp{ color:var(--vermilion); font-style:normal; margin-left:10px; font-size:.78em; letter-spacing:0 !important; text-transform:none !important; }
+.les-desc{ font-size:14px; line-height:1.65; color:#d2ded6; opacity:.88; max-width:52ch; margin-bottom:20px; text-shadow:0 1px 16px rgba(3,6,8,.9); }
+.les-actions{ margin-top:auto; display:flex; gap:12px; flex-wrap:wrap; }
+
+.les-side{
+  display:flex; flex-direction:column; gap:12px; justify-content:center;
+  border-left:1px solid var(--line-soft); padding-left:clamp(20px,2.5vw,32px);
+}
+.stat-chip{ padding:14px 18px; background:rgba(255,255,255,.03); border:1px solid var(--line-soft); border-radius:6px; }
+.stat-chip b{ display:block; font-size:15px; font-weight:600; color:var(--bone); letter-spacing:.05em; }
+.stat-chip span{ font-size:11px; color:#98a49c; text-transform:uppercase; letter-spacing:.12em; }
+
+.les-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.les-card{
+  position:relative; display:flex; flex-direction:column; justify-content:space-between;
+  padding:clamp(24px,2.5vw,36px); background:rgba(10,14,18,.78); border:1px solid var(--line);
+  border-radius:8px; transition:all .4s var(--ease-out);
+}
+.les-card:hover{ border-color:rgba(224,35,28,.55); background:rgba(16,22,28,.95); box-shadow:0 12px 40px rgba(0,0,0,.6); }
+.les-card-content{ margin-bottom:20px; }
+
+.btn-primary{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:12px 24px;
+  background:var(--vermilion); color:#ffffff; border:1px solid var(--vermilion);
+  border-radius:4px; font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  text-decoration:none; cursor:pointer; transition:all .3s ease;
+}
+.btn-primary:hover{
+  background:#ff322b; border-color:#ff322b; transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(224,35,28,.38);
+}
+.btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:12px 24px;
+  background:transparent; color:var(--bone); border:1px solid var(--line);
+  border-radius:4px; font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  text-decoration:none; cursor:pointer; transition:all .3s ease;
+}
+.btn-secondary:hover{
+  background:var(--vermilion); color:#ffffff; border-color:var(--vermilion); transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(224,35,28,.32);
+}
+
+@media (max-width:768px){
+  .les-spotlight{ grid-template-columns:1fr; }
+  .les-side{ border-left:none; border-top:1px solid var(--line-soft); padding-left:0; padding-top:20px; margin-top:16px; }
+  .les-grid{ grid-template-columns:1fr; }
+}
 
 /* — chapter IV: eternity */
-.fin{ min-height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-.fin .eyebrow{ margin-bottom:26px; }
+.fin{ min-height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding-bottom:80px; position:relative; z-index:20; }
+.fin .eyebrow{ margin-bottom:16px; }
 .fin h2{ font-size:clamp(38px,7.4vw,124px); line-height:.94; letter-spacing:-.03em; text-transform:uppercase; }
-.fin p{ max-width:44ch; margin:26px auto 0; }
+.fin p{ max-width:48ch; margin:0 auto 36px; }
+
+.contact-grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:24px;
+  max-width:780px; width:100%; margin-inline:auto; margin-top:36px; margin-bottom:0;
+  text-align:left; box-sizing:border-box; padding:0; position:relative; z-index:100 !important;
+}
+.contact-card-wrap{
+  position:relative; perspective:1000px; width:100%; height:100%;
+}
+.contact-card{
+  position:relative; display:flex; flex-direction:column; align-items:stretch;
+  min-height:280px; height:100%; padding:28px; box-sizing:border-box;
+  text-decoration:none; color:inherit;
+  transform-style:preserve-3d; will-change:transform;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1);
+  z-index:2;
+}
+
+/* Layer 1: Face background (translateZ: 0) */
+.contact-bg{
+  position:absolute; inset:0; background:rgba(8,12,16,.90); border:1px solid var(--line-soft);
+  border-radius:8px; transform:translateZ(0); transform-style:preserve-3d; pointer-events:none;
+  transition:border-color .4s var(--ease); z-index:1;
+}
+.contact-card:hover .contact-bg, .contact-card:focus-visible .contact-bg{
+  border-color:rgba(224,35,28,.35);
+}
+
+/* Layer 2: Giant Kanji Watermark (translateZ: 10px) */
+.contact-kanji-watermark{
+  position:absolute; right:18px; bottom:14px; font-size:clamp(52px,5.8vw,76px);
+  font-family:inherit; font-weight:700; line-height:1; color:rgba(223,231,224,.038);
+  pointer-events:none; user-select:none; transform:translateZ(10px); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1); backface-visibility:hidden; z-index:2;
+}
+
+/* Layer 3: Floating Inner Frame (Rest: 12px, Hover: 25px) */
+.contact-inner-frame{
+  position:absolute; inset:10px; border:1px solid rgba(255,255,255,.08); border-radius:4px;
+  pointer-events:none; transform:translateZ(12px); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1); backface-visibility:hidden; z-index:3;
+}
+.contact-card:hover .contact-inner-frame, .contact-card:focus-visible .contact-inner-frame{
+  transform:translateZ(25px);
+}
+
+/* Layer 4: Corner Brackets (Rest: 0, Hover: 35px) */
+.contact-brackets{
+  position:absolute; inset:16px; pointer-events:none; transform:translateZ(0);
+  transform-style:preserve-3d; transition:transform 500ms cubic-bezier(.2,.7,.2,1); z-index:4;
+}
+.contact-card:hover .contact-brackets, .contact-card:focus-visible .contact-brackets{
+  transform:translateZ(35px);
+}
+.contact-brackets span{
+  position:absolute; width:6px; height:6px; border-color:rgba(223,231,224,.15); border-style:solid;
+}
+.contact-brackets .br-tl{ top:0; left:0; border-width:1px 0 0 1px; }
+.contact-brackets .br-tr{ top:0; right:0; border-width:1px 1px 0 0; }
+.contact-brackets .br-bl{ bottom:0; left:0; border-width:0 0 1px 1px; }
+.contact-brackets .br-br{ bottom:0; right:0; border-width:0 1px 1px 0; }
+
+/* Layer 5: Label, title, handle, description (Rest: 0, Hover: 30px) */
+.contact-content{
+  transform:translateZ(0); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1);
+  position:relative; z-index:5; display:flex; flex-direction:column;
+  padding-right:48px; backface-visibility:hidden;
+}
+.contact-card:hover .contact-content, .contact-card:focus-visible .contact-content{
+  transform:translateZ(30px);
+}
+.contact-content .k-label{
+  display:block; font-size:10px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--vermilion); margin-bottom:8px; height:16px; line-height:16px; white-space:nowrap;
+  backface-visibility:hidden;
+}
+.contact-title{
+  display:flex; align-items:baseline; gap:8px; white-space:nowrap;
+  font-size:19px; font-weight:400; margin:0 0 10px 0; color:var(--bone); line-height:1.2;
+  backface-visibility:hidden;
+}
+.contact-title .jp{
+  color:var(--vermilion); font-style:normal; font-size:.8em; white-space:nowrap;
+}
+.contact-desc{
+  font-size:13px; line-height:1.55; color:#b2c0b7; margin:0 0 20px 0;
+  overflow-wrap:anywhere; word-break:break-word; text-overflow:clip;
+  backface-visibility:hidden;
+}
+
+/* Layer 6: Divider line and button (Rest: 0, Hover: 45px) */
+.contact-divider{
+  width:100%; height:1px; background:rgba(223,231,224,.08);
+  margin-top:auto; margin-bottom:18px; transform:translateZ(0); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1); pointer-events:none; z-index:6;
+}
+.contact-card:hover .contact-divider, .contact-card:focus-visible .contact-divider{
+  transform:translateZ(45px);
+}
+.contact-card .btn-primary, .contact-card .btn-secondary{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:42px; min-height:42px; padding:0 20px; white-space:nowrap; width:auto;
+  font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; text-align:left;
+  align-self:flex-start; box-sizing:border-box; transform:translateZ(0); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1), background .3s, border-color .3s;
+  position:relative; z-index:7; backface-visibility:hidden;
+}
+.contact-card:hover .btn-primary, .contact-card:hover .btn-secondary,
+.contact-card:focus-visible .btn-primary, .contact-card:focus-visible .btn-secondary{
+  transform:translateZ(45px);
+}
+
+/* Layer 7: Concentric rings and Platform Icon */
+.card-rings-anchor{
+  position:absolute; top:0; right:0; width:110px; height:110px; pointer-events:none;
+  transform-style:preserve-3d; z-index:8;
+}
+.cb-ring{
+  position:absolute; top:28px; right:28px; border:1px solid rgba(224,35,28,.20); border-radius:50%;
+  background:transparent; pointer-events:none; transform:translateZ(0); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1);
+}
+.cb-ring-1{ width:110px; height:110px; margin-top:-55px; margin-right:-55px; transition-delay:0s; }
+.cb-ring-2{ width:80px; height:80px; margin-top:-40px; margin-right:-40px; transition-delay:0.1s; }
+.cb-ring-3{ width:50px; height:50px; margin-top:-25px; margin-right:-25px; transition-delay:0.2s; }
+
+.contact-card:hover .cb-ring-1, .contact-card:focus-visible .cb-ring-1{ transform:translateZ(30px); }
+.contact-card:hover .cb-ring-2, .contact-card:focus-visible .cb-ring-2{ transform:translateZ(55px); }
+.contact-card:hover .cb-ring-3, .contact-card:focus-visible .cb-ring-3{ transform:translateZ(80px); }
+
+.cb-ring-dot{
+  position:absolute; top:-2px; left:50%; margin-left:-1.5px; width:3px; height:3px;
+  border-radius:50%; background:rgba(224,35,28,.60); pointer-events:none;
+}
+.cb-ring-rot{
+  position:absolute; inset:0; border-radius:50%; pointer-events:none;
+}
+@keyframes cb-spin-cw{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+@keyframes cb-spin-ccw{ from{ transform:rotate(0deg); } to{ transform:rotate(-360deg); } }
+
+.contact-card:hover .cb-rot-cw, .contact-card:focus-visible .cb-rot-cw{
+  animation:cb-spin-cw 20s linear infinite;
+}
+.contact-card:hover .cb-rot-ccw, .contact-card:focus-visible .cb-rot-ccw{
+  animation:cb-spin-ccw 20s linear infinite;
+}
+
+/* Platform Icon in the ring center: Rest: 60px, Hover: 110px, Delay: 0.3s */
+.contact-icon{
+  position:absolute; top:28px; right:28px; width:18px; height:18px;
+  margin-top:-9px; margin-right:-9px; stroke:#dfe7e0; fill:none; pointer-events:none;
+  transform:translateZ(60px); transform-style:preserve-3d;
+  transition:transform 500ms cubic-bezier(.2,.7,.2,1); transition-delay:0s;
+  backface-visibility:hidden; z-index:9;
+}
+.contact-card:hover .contact-icon, .contact-card:focus-visible .contact-icon{
+  transform:translateZ(110px); transition-delay:0.3s;
+}
+
+/* Fallback keyboard tilt */
+.contact-card:focus-visible{
+  transform:rotate3d(1,1,0,12deg);
+}
+
+@media (max-width:768px), (hover:none), (prefers-reduced-motion:reduce){
+  .contact-grid{
+    grid-template-columns:1fr; max-width:100%; width:100%;
+    padding:0 20px; gap:16px; margin-inline:auto;
+  }
+  .contact-card{ transform:none !important; min-height:250px; padding:24px; }
+  .contact-inner-frame{ transform:none !important; }
+  .contact-kanji-watermark{ transform:none !important; }
+  .contact-brackets{ transform:none !important; }
+  .contact-content{ transform:none !important; }
+  .contact-divider{ transform:none !important; }
+  .contact-card .btn-primary, .contact-card .btn-secondary{ transform:none !important; }
+  .cb-ring{ transform:none !important; }
+  .contact-icon{ transform:none !important; }
+  .cb-rot-cw, .cb-rot-ccw{ animation:none !important; }
+}
 .cta{
   position:relative; display:inline-flex; align-items:center; gap:14px; margin-top:44px;
   padding:17px 30px; border:1px solid var(--line); border-radius:100px; overflow:hidden;
@@ -532,31 +1187,17 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
      approach, the gate and the lower steps to buy half a point of contrast
      nobody was short of. */
 body[data-layout-hero="b"] .hero-top{ margin-left:0; max-width:min(590px,46vw); }
-body[data-layout-hero="b"] .hero-foot{ width:min(480px,40vw); margin-left:0; }
+body[data-layout-hero="b"] .hero-foot{ width:auto; margin-left:0; z-index: 25; }
 body[data-layout-hero="b"] .hero-cue{ justify-content:flex-start; }
-body[data-layout-hero="b"] .chapters{ grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
-body[data-layout-hero="b"] .chip{ position:relative; flex-direction:column; gap:0; }
-body[data-layout-hero="b"] .chip .num{ font-size:clamp(29px,3.1vw,48px); }
-body[data-layout-hero="b"] .chip .tx{
-  position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);
-  clip-path:inset(50%); white-space:nowrap;
-}
-/* the live window drops into the open right corner, away from the reading
-   column and the oversized 3-D wordmark */
+body[data-layout-hero="b"] .chapters{ display:flex; align-items:center; gap:clamp(40px,3.2vw,48px); grid-template-columns:none; }
+body[data-layout-hero="b"] .chip{ position:relative; flex-direction:row; gap:8px; }
+body[data-layout-hero="b"] .chip .num{ font-size:12px; font-weight:300; letter-spacing:0.15em; }
+body[data-layout-hero="b"] .chip .tx{ display:none; }
 body[data-layout-hero="b"] .peek{
-  left:auto; right:var(--pad); top:auto; bottom:clamp(38px,7vh,96px);
+  left:auto; right:var(--pad); top:auto; bottom:clamp(24px,4vh,40px); z-index:65; width:clamp(180px,14vw,230px);
 }
-body[data-layout-hero="b"] .peek-cap b.jp{ font-size:clamp(20px,2.2vw,34px); letter-spacing:.18em; }
-/* The Japanese title reads down the right edge, hung under the navigation —
-   the one mark on that side of the frame now that the romanization has gone. */
-body[data-layout-hero="b"] .hero-side{
-  left:auto; right:var(--pad); top:calc(var(--nav-h) + clamp(14px,3vh,42px));
-  bottom:auto; transform:none; display:block;
-}
-body[data-layout-hero="b"] .hero-side .v{
-  position:static; transform:none;
-  font-size:clamp(30px,3.2vw,54px); letter-spacing:.12em; color:rgba(223,231,224,.62);
-}
+body[data-layout-hero="b"] .peek-cap b.jp{ font-size:10px; letter-spacing:.1em; }
+body[data-layout-hero="b"] .hero-side{ display:none !important; }
 
 /* — story B · spread: the title crosses two columns, the reading column is
      held to the right, and the figures become a ruled band. */
@@ -574,30 +1215,34 @@ body[data-layout-story="b"] .gate-stats div:last-child{ border-right:1px solid v
      The cards stretch to their rows and the frames flex, so the two small
      viewports meet the tall one exactly instead of drifting apart. */
 body[data-layout-gallery="b"] .cards{
-  grid-template-columns:minmax(0,1.55fr) minmax(260px,.75fr);
-  grid-template-rows:repeat(2,minmax(0,1fr));
-  gap:14px; align-items:stretch;
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px; align-items:stretch;
 }
 body[data-layout-gallery="b"] .card{ transform:none; display:flex; flex-direction:column; min-height:0; }
-body[data-layout-gallery="b"] .card-fr{ aspect-ratio:auto; flex:1 1 auto; min-height:0; }
-body[data-layout-gallery="b"] .card:first-child{ grid-row:1 / 3; }
-body[data-layout-gallery="b"] .card:first-child .card-fr{ flex:0 0 auto; height:min(72vh,760px); }
-body[data-layout-gallery="b"] .card:not(:first-child) .card-fr{ min-height:200px; }
+body[data-layout-gallery="b"] .card-fr{ aspect-ratio:16/10; flex:0 0 auto; width:100%; }
+@media (max-width:820px){
+  body[data-layout-gallery="b"] .cards{ grid-template-columns:1fr; }
+}
 
 /* — chapters B · atlas: a two-then-three plate grid instead of a syllabus.
      Number and title sit at the top of each plate, the running time drops to
      the foot of it. */
 body[data-layout-curriculum="b"] .cur-head{ grid-template-columns:minmax(0,.72fr) minmax(0,1.2fr); align-items:start; }
 body[data-layout-curriculum="b"] .cur{
-  display:grid; grid-template-columns:repeat(6,1fr); gap:1px;
-  background:var(--line-soft); border:1px solid var(--line-soft);
+  display:grid; grid-template-columns:repeat(6,1fr); gap:16px;
+  background:transparent; border:0;
 }
 body[data-layout-curriculum="b"] .les{
-  display:flex; flex-direction:column; align-items:flex-start; min-height:250px;
-  padding:24px; gap:14px; border:0; background:rgba(5,7,10,.84); overflow:hidden;
+  display:flex; flex-direction:column; align-items:flex-start; min-height:220px;
+  padding:28px; gap:12px; border:1px solid var(--line); background:rgba(10,14,18,.88); overflow:hidden;
+  border-radius:8px; transition:border-color .4s, transform .4s var(--ease-out);
 }
-body[data-layout-curriculum="b"] .les:nth-child(-n+2){ grid-column:span 3; }
-body[data-layout-curriculum="b"] .les:nth-child(n+3){ grid-column:span 2; }
+body[data-layout-curriculum="b"] .les:hover{ border-color:var(--vermilion); transform:translateY(-3px); }
+body[data-layout-curriculum="b"] .les:nth-child(1){ grid-column:span 6; background:rgba(16,22,26,.95); border-color:rgba(224,35,28,.35); }
+body[data-layout-curriculum="b"] .les:nth-child(n+2){ grid-column:span 3; }
+@media (max-width:820px){
+  body[data-layout-curriculum="b"] .les:nth-child(n){ grid-column:span 6; }
+}
 body[data-layout-curriculum="b"] .les::before{ left:0; background:linear-gradient(145deg,rgba(224,35,28,.13),transparent 58%); }
 body[data-layout-curriculum="b"] .les:hover{ padding-left:32px; }
 body[data-layout-curriculum="b"] .les h3{ font-size:clamp(20px,2vw,30px); }
@@ -607,17 +1252,20 @@ body[data-layout-curriculum="b"] .les .t{ text-align:left; margin-top:auto; }
 /* — closing B · gallery: the title hangs vertically on the right while the
      chapter mark, the last line and the call to action run down the left. */
 body[data-layout-closing="b"] .fin{
-  display:grid; grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr); grid-template-rows:auto auto auto;
-  align-content:center; align-items:end; text-align:left;
-  column-gap:clamp(40px,7vw,120px); row-gap:clamp(16px,2.6vh,30px);
+  position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:clamp(88px,12vh,160px) var(--pad) clamp(60px,8vh,100px);
+  width:100%; box-sizing:border-box;
 }
-body[data-layout-closing="b"] .fin .eyebrow{ grid-column:1; grid-row:1; margin:0; }
+body[data-layout-closing="b"] .fin .eyebrow{ margin:0 0 16px; text-align:center; position:relative; z-index:10; }
 body[data-layout-closing="b"] .fin h2{
-  grid-column:2; grid-row:1 / 4; align-self:center; justify-self:end;
-  font-size:clamp(52px,6vw,82px); writing-mode:vertical-rl;
+  position:absolute; right:clamp(16px,2.8vw,52px); top:50%; transform:translateY(-50%);
+  font-size:clamp(44px,5.2vw,76px); writing-mode:vertical-rl; margin:0;
+  white-space:nowrap; pointer-events:none; z-index:10; opacity:.85;
 }
-body[data-layout-closing="b"] .fin p{ grid-column:1; grid-row:2; margin:0; }
-body[data-layout-closing="b"] .fin .cta{ grid-column:1; grid-row:3; justify-self:start; margin-top:4px; }
+body[data-layout-closing="b"] .fin p{
+  max-width:52ch; margin:0 auto 28px; text-align:center; position:relative; z-index:10;
+}
+body[data-layout-closing="b"] .fin .cta{ margin-top:28px; position:relative; z-index:10; }
 
 /* — footer B · manifesto: the statement leads, the navigation becomes a
      compact ruled index beneath it. */
@@ -721,8 +1369,8 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
 .fg .fg-el:nth-child(3){ --fg-delay:180ms; }
 .fg .fg-el:nth-child(4){ --fg-delay:270ms; }
 .fg.fg-retiring .fg-el{
-  opacity:0; transform:translate3d(0,8vh,0) scale(.98); filter:blur(18px);
-  transition:opacity .68s var(--ease-out),transform .78s var(--ease-out),filter .78s var(--ease-out);
+  opacity:0; transform:translate3d(0,8vh,0) scale(.98);
+  transition:opacity .68s var(--ease-out),transform .78s var(--ease-out);
 }
 
 /* Placement is keyed off [data-fg] rather than the section id, because the
@@ -765,10 +1413,10 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
 
 /* — IV · afterlight: a far hill closes the horizon, the shrine ruins stand at
      the left of it, grass banks the right, one branch hangs into the corner */
-[data-fg="eternity"] .fg-hill   { left:-8%; width:min(150vh,116%); bottom:calc(-1 * min(20vh,15.5vw)); }
-[data-fg="eternity"] .fg-ruins  { left:-5%;  bottom:-32px; width:clamp(240px,28vw,500px); }
-[data-fg="eternity"] .fg-grass  { right:-7%; bottom:-60px; width:clamp(300px,37vw,670px); }
-[data-fg="eternity"] .fg-sakura { left:-15%; bottom:-70px; width:clamp(280px,33vw,580px); }
+[data-fg="eternity"] .fg-hill   { left:-8%; width:min(150vh,116%); bottom:calc(-1 * min(20vh,15.5vw)); pointer-events:none !important; }
+[data-fg="eternity"] .fg-ruins  { left:-16%; bottom:-70px; width:clamp(180px,20vw,360px); pointer-events:none !important; }
+[data-fg="eternity"] .fg-grass  { right:-7%; bottom:-60px; width:clamp(300px,37vw,670px); pointer-events:none !important; }
+[data-fg="eternity"] .fg-sakura { left:-26%; bottom:-180px; width:clamp(200px,22vw,400px); pointer-events:none !important; }
 
 /* — colophon: one restrained planting along the lower edge, nothing above it */
 [data-fg="foot"] .fg-bush   { left:-6%;  bottom:-110px; width:clamp(230px,28vw,480px); }
@@ -782,7 +1430,7 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   [data-fg="pathways"] .fg-sakura{ width:clamp(400px,46vw,660px); }
   [data-fg="pathways"] .fg-leaves{ width:clamp(310px,35vw,500px); }
   [data-fg="lessons"] .fg-wall   { width:clamp(360px,45vw,640px); }
-  [data-fg="eternity"] .fg-sakura{ width:clamp(260px,30vw,430px); }
+  [data-fg="eternity"] .fg-sakura{ left:-30%; bottom:-180px; width:clamp(180px,20vw,320px); pointer-events:none !important; }
 }
 @media (max-width:820px){
   /* one or two anchors per section: the stacked cards, the atlas plates and
@@ -852,11 +1500,11 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   body[data-layout-curriculum="b"] .les:nth-child(n){ grid-column:auto; min-height:0; padding:20px; }
   body[data-layout-curriculum="b"] .les:hover{ padding-left:20px; }
 
-  body[data-layout-closing="b"] .fin{ display:flex; align-items:center; text-align:center; gap:0; }
-  body[data-layout-closing="b"] .fin .eyebrow{ margin:0 0 26px; }
-  body[data-layout-closing="b"] .fin h2{ writing-mode:horizontal-tb; font-size:clamp(38px,7.4vw,124px); }
-  body[data-layout-closing="b"] .fin p{ margin:26px auto 0; }
-  body[data-layout-closing="b"] .fin .cta{ margin-top:40px; }
+  body[data-layout-closing="b"] .fin{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:0; }
+  body[data-layout-closing="b"] .fin .eyebrow{ margin:0 0 16px; }
+  body[data-layout-closing="b"] .fin h2{ position:static; transform:none; writing-mode:horizontal-tb; font-size:clamp(30px,7vw,48px); margin:0 0 16px; }
+  body[data-layout-closing="b"] .fin p{ margin:0 auto 24px; }
+  body[data-layout-closing="b"] .fin .cta{ margin-top:24px; }
 
   body[data-layout-footer="b"] .foot-grid{ grid-template-columns:1fr; }
   body[data-layout-footer="b"] .foot-brand{ grid-column:auto; grid-template-columns:minmax(0,1fr); row-gap:16px; }
@@ -900,10 +1548,10 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
         <path d="M6 12h32M9.5 17h25M22 8v28" stroke="#dfe7e0" stroke-width="1.2"/>
       </svg>
     </div>
-    <div class="pre-jp jp">影の道</div>
+    <div class="pre-jp jp">真理 · 叡智 · 機巧</div>
     <div class="pre-bar"><i id="pre-fill"></i></div>
     <div class="pre-meta">
-      <span>Raising the mountain temple</span><b><span id="pre-pct">0</span>%</b>
+      <span>Initializing Aryan Rai's System Engine</span><b><span id="pre-pct">0</span>%</b>
     </div>
   </div>
 </div>
@@ -916,66 +1564,60 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
       <path d="M5 13h34M9 18.4h26M22 8.5v27" stroke="#dfe7e0" stroke-width="1.5"/>
       <path d="M14 35.5h16" stroke="#dfe7e0" stroke-width="1.2" stroke-opacity=".6"/>
     </svg>
-    <span class="brand-tx"><b>KAGE</b><i>HIDDEN REALMS OF KYOTO</i></span>
+    <span class="brand-tx"><b>ARYAN</b><i>AI BUILDER & DEVELOPER</i></span>
   </a>
   <nav class="nav-links" id="navlinks">
-    <a class="nav-link" href="#gate" data-cursor><span>Temples</span><span class="alt">伽藍</span></a>
-    <a class="nav-link" href="#pathways" data-cursor><span>Gardens</span><span class="alt">庭園</span></a>
-    <a class="nav-link" href="#lessons" data-cursor><span>Rituals</span><span class="alt">神事</span></a>
-    <a class="nav-link" href="#eternity" data-cursor><span>Afterlight</span><span class="alt">残光</span></a>
+    <a class="nav-link" href="#gate" data-cursor><span>About</span><span class="alt" lang="ja">概要</span></a>
+    <a class="nav-link" href="#pathways" data-cursor><span>Work</span><span class="alt" lang="ja">事例</span></a>
+    <a class="nav-link" href="#lessons" data-cursor><span>Community</span><span class="alt" lang="ja">共同体</span></a>
+    <a class="nav-link" href="#eternity" data-cursor><span>Contact</span><span class="alt" lang="ja">接続</span></a>
   </nav>
+  <button class="nav-audio-circle" id="audio-toggle" aria-label="Play music" title="Toggle Music (音)" data-cursor>
+    <span class="audio-circle-inner" aria-hidden="true">
+      <span class="audio-circle-kanji">音</span>
+      <span class="audio-circle-bars">
+        <i></i><i></i><i></i>
+      </span>
+    </span>
+  </button>
   <button class="nav-burger" aria-label="Menu" data-cursor><i></i><i></i></button>
 </header>
+
+<audio id="site-ambient-audio" preload="none" loop>
+  <source src="secret-pathways-assets/music/japanese-trap.mp3" type="audio/mpeg">
+</audio>
 
 <div class="page" id="top">
 
 <!-- ============================================================ hero -->
 <section class="hero" id="hero" data-cam="0">
   <div class="hero-top">
-    <div class="eyebrow" data-rv="fade"><span class="dot"></span> Chapter 00 — The Hidden Gate</div>
-    <h1 class="display h-hero">
-      <span class="mask-line"><span>Where stillness</span></span>
-      <span class="mask-line"><span>reveals the</span></span>
-      <span class="mask-line"><span>unseen.</span></span>
-    </h1>
-    <p class="hero-sub body" data-rv="up">Enter Kyoto through its quiet thresholds, where ritual,
-      craft, and memory shape the path.</p>
+    <div class="eyebrow" data-rv="fade"><span class="dot"></span> AI BUILDER · DEVELOPER · FOUNDER</div>
   </div>
 
   <div class="hero-spacer"></div>
 
   <div class="hero-foot">
-    <div class="hero-cue" data-rv="fade"><span>Scroll to enter</span><span class="track"><i></i></span></div>
     <div class="chapters" id="chips">
-      <div class="chip" data-chip="0" data-rv="up" data-cursor><span class="num">01</span>
-        <span class="tx"><b>Thresholds</b><p>Discover the hidden gates that open on to deeper paths.</p></span></div>
-      <div class="chip" data-chip="1" data-rv="up" data-cursor><span class="num">02</span>
-        <span class="tx"><b>Still Gardens</b><p>Witness the courts where silence gently unfolds.</p></span></div>
-      <div class="chip" data-chip="2" data-rv="up" data-cursor><span class="num">03</span>
-        <span class="tx"><b>Sacred Craft</b><p>Embrace the hands and heritage that shape devotion.</p></span></div>
-      <div class="chip" data-chip="3" data-rv="up" data-cursor><span class="num">04</span>
-        <span class="tx"><b>Night Rituals</b><p>Explore the rites that awaken when the day is done.</p></span></div>
+      <div class="chip" data-chip="0" data-rv="up" data-cursor><span class="num">01</span><span class="tx"><b>01 — ABOUT</b></span></div>
+      <div class="chip" data-chip="1" data-rv="up" data-cursor><span class="num">02</span><span class="tx"><b>02 — WORK</b></span></div>
+      <div class="chip" data-chip="2" data-rv="up" data-cursor><span class="num">03</span><span class="tx"><b>03 — COMMUNITY</b></span></div>
+      <div class="chip" data-chip="3" data-rv="up" data-cursor><span class="num">04</span><span class="tx"><b>04 — LAB & CONNECT</b></span></div>
     </div>
   </div>
 
-  <a class="peek" href="#pathways" data-view="3" data-rv="fade" data-cursor aria-label="Preview: Sanmon, before the bell">
-    <!-- data-frame, or the live view is blitted over the whole anchor and
-         runs on down behind the caption instead of stopping at the frame -->
-    <span class="peek-fr" data-frame></span>
-    <span class="peek-play"><svg viewBox="0 0 22 22" fill="none"><path d="M8 5.6 16.4 11 8 16.4z" fill="#dfe7e0"/></svg></span>
-    <span class="peek-cap"><b class="jp">山門</b><i>Sanmon — before the bell</i></span>
+  <a class="peek" href="https://youtube.com/@codeblooded99?si=E7eXGNTQJ3XZv6bT" target="_blank" rel="noopener noreferrer" data-view="3" data-rv="fade" data-cursor aria-label="Watch on YouTube: CodeBlooded99">
+    <span class="peek-fr" data-frame>
+      <span class="peek-play"><svg viewBox="0 0 22 22" fill="none"><path d="M8 5.6 16.4 11 8 16.4z" fill="#dfe7e0"/></svg></span>
+    </span>
+    <span class="peek-cap"><b class="jp" lang="ja">機巧</b><i>WATCH ON YOUTUBE · CODEBLOODED99</i></span>
   </a>
 
-  <div class="word-fb" aria-hidden="true">KAGE</div>
-
-  <div class="hero-side" data-rv="up">
-    <span class="v jp">影の道</span>
-  </div>
+  <div class="word-fb" aria-hidden="true">ARYAN</div>
 </section>
 
 <!-- ============================================================ chapter I -->
 <section class="sec" id="gate" data-cam="1">
-  <!-- foreground: the wall arrives first, the pine at the edge, the grass last -->
   <div class="fg" data-fg="gate" aria-hidden="true">
     <span class="fg-el fg-wall" data-fg-in="left">
       <img src="secret-pathways-assets/foreground/png/temple-wall.webp" alt="" width="1536" height="884" loading="lazy" decoding="async">
@@ -988,35 +1630,29 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     </span>
   </div>
   <div class="sec-head" data-rv="fade">
-    <span class="k"><b>01</b> — The Sanmon</span><span class="rule"></span><span class="k jp">山門</span>
+    <span class="k"><b>01</b> — ABOUT ARYAN RAI</span><span class="rule"></span><span class="k jp">概要</span>
   </div>
   <div class="gate-grid">
-    <h2 class="display h-sec" data-rv="up">Charred cypress, worn stone, one gate left open.</h2>
+    <h2 class="display h-sec" data-rv="up">Curious by default. Obsessed with building.</h2>
     <div class="gate-copy">
-      <p class="lead" data-rv="up">Kage begins where the city stops: a mountain gate of cedar burned black,
-        standing in its own weather. The soot is not decoration. It is how a board is taught to survive a
-        hundred rainy seasons, and the first thing this place asks you to understand.</p>
-      <p class="body" data-rv="up">Climb the worn steps and the worship hall lifts out of the mist, its paper
-        screens lit from inside like a lantern the size of a house. Above the eaves a vermilion moon holds
-        its place, patient, half hidden. Nothing here is in a hurry. Neither, for the next ninety minutes,
-        are you.</p>
+      <p class="lead" data-rv="up">I'm a B.Tech Computer Science & Engineering student at Inderprastha Engineering College (2025–2029) who learns by building. My interests sit at the intersection of software engineering, artificial intelligence, agentic systems, interactive web experiences, and rapid problem-solving.</p>
+      <p class="body" data-rv="up">I enjoy taking an idea from a rough concept to something people can actually interact with — whether that's an AI agent, a web application, a computer-vision system, a hackathon prototype, or an experimental interface.<br><br><strong style="color: var(--bone);">PHILOSOPHY: LEARN → BUILD → BREAK → ITERATE → SHIP</strong></p>
       <a class="arrowlink" href="#pathways" data-rv="fade" data-cursor>
-        <span>Cross the threshold</span>
+        <span>Explore Featured Work</span>
         <span class="ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
       </a>
     </div>
   </div>
   <div class="gate-stats" data-rv="up">
-    <div><b>05</b><span>Chapters</span></div>
-    <div><b>92</b><span>Minutes</span></div>
-    <div><b>1611</b><span>Hall raised</span></div>
-    <div><b>∞</b><span>Stillness</span></div>
+    <div><b>04</b><span>Featured Projects</span></div>
+    <div><b>2025–29</b><span>B.Tech CSE</span></div>
+    <div><b>∞</b><span>Curiosity</span></div>
+    <div><b>1</b><span>CodeBlooded</span></div>
   </div>
 </section>
 
 <!-- ============================================================ chapter II -->
 <section class="sec" id="pathways" data-cam="2">
-  <!-- foreground: the garden frames the mosaic from the sides and the two lower corners -->
   <div class="fg" data-fg="pathways" aria-hidden="true">
     <span class="fg-el fg-sakura fg-el--sway" data-fg-in="left">
       <img src="secret-pathways-assets/foreground/png/sakura-branch.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
@@ -1032,39 +1668,46 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     </span>
   </div>
   <div class="sec-head" data-rv="fade">
-    <span class="k"><b>02</b> — Still Gardens</span><span class="rule"></span><span class="k jp">庭園</span>
+    <span class="k"><b>02</b> — FEATURED WORK</span><span class="rule"></span><span class="k jp">事例</span>
   </div>
   <div class="cards" id="cards">
-    <article class="card" data-rv="up" data-view="0" data-cursor>
+    <a class="card" href="https://github.com/CodeBloodedCB/Nexus" target="_blank" rel="noopener noreferrer" data-rv="up" data-view="0" data-cursor>
       <div class="card-fr" data-frame>
-                <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
+        <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
         <i class="glow" style="--gx:80.2%; --gy:23.9%; --gr:22%; --gt:6.1s; --gt2:9.7s; --gc1:rgba(255,142,108,.50); --gc2:rgba(212,56,38,.24)"></i>
-        <div class="card-lab"><b>Approach</b><span class="jp">参道</span></div>
+        <div class="card-lab"><b>Logicure</b><span class="jp">論理学</span></div>
       </div>
-      <div class="card-meta"><span>The long climb</span><span>01 / 03</span></div>
-    </article>
-    <article class="card" data-rv="up" data-view="1" data-cursor>
+      <div class="card-meta"><span>AI / Agentic Risk Decision System</span><span>01 / 04</span></div>
+    </a>
+    <a class="card" href="https://github.com/CodeBloodedCB/MayaVihin" target="_blank" rel="noopener noreferrer" data-rv="up" data-cursor>
       <div class="card-fr" data-frame>
-                <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
+        <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
         <i class="glow glow--flame" style="--gx:70.5%; --gy:47.2%; --gr:14%; --gt:3.7s; --gt2:5.3s; --gc1:rgba(255,198,124,.62); --gc2:rgba(226,118,40,.30)"></i>
-        <div class="card-lab"><b>Lanterns</b><span class="jp">灯籠</span></div>
+        <div class="card-lab"><b>Mayavihin</b><span class="jp">無妄</span></div>
       </div>
-      <div class="card-meta"><span>Lantern court</span><span>02 / 03</span></div>
-    </article>
-    <article class="card" data-rv="up" data-view="2" data-cursor>
+      <div class="card-meta"><span>AI / Deepfake Media Detection</span><span>02 / 04</span></div>
+    </a>
+    <a class="card" href="https://github.com/Aryanrai-007/SynQro1.0" target="_blank" rel="noopener noreferrer" data-rv="up" data-cursor>
       <div class="card-fr" data-frame>
-                <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
+        <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
         <i class="glow" style="--gx:48.0%; --gy:16.8%; --gr:20%; --gt:7.3s; --gt2:11.2s; --gc1:rgba(255,138,104,.52); --gc2:rgba(208,54,36,.24)"></i>
-        <div class="card-lab"><b>Moonwater</b><span class="jp">月影</span></div>
+        <div class="card-lab"><b>SynQro</b><span class="jp">同期</span></div>
       </div>
-      <div class="card-meta"><span>The wet court</span><span>03 / 03</span></div>
-    </article>
+      <div class="card-meta"><span>AI Queue Automation Platform</span><span>03 / 04</span></div>
+    </a>
+    <a class="card" href="https://github.com/CodeBloodedCB/SatQueryX" target="_blank" rel="noopener noreferrer" data-rv="up" data-cursor>
+      <div class="card-fr" data-frame>
+        <span class="card-ar"><svg viewBox="0 0 14 14" fill="none"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg></span>
+        <i class="glow" style="--gx:60.0%; --gy:30.0%; --gr:18%; --gt:5.2s; --gt2:8.4s; --gc1:rgba(255,142,108,.50); --gc2:rgba(212,56,38,.24)"></i>
+        <div class="card-lab"><b>SatQueryX</b><span class="jp">宇宙</span></div>
+      </div>
+      <div class="card-meta"><span>Geo / Remote Sensing Satellite Engine</span><span>04 / 04</span></div>
+    </a>
   </div>
 </section>
 
 <!-- ============================================================ chapter III -->
 <section class="sec" id="lessons" data-cam="3">
-  <!-- foreground: a low periphery for the atlas — wall fragment, basalt, one stand of grass -->
   <div class="fg" data-fg="lessons" aria-hidden="true">
     <span class="fg-el fg-wall fg-el--flip" data-fg-in="right">
       <img src="secret-pathways-assets/foreground/png/temple-wall.webp" alt="" width="1536" height="884" loading="lazy" decoding="async">
@@ -1077,50 +1720,40 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
     </span>
   </div>
   <div class="sec-head" data-rv="fade">
-    <span class="k"><b>03</b> — Sacred Craft</span><span class="rule"></span><span class="k jp">手業</span>
+    <span class="k"><b>03</b> — CODEBLOODED & COMMUNITY</span><span class="rule"></span><span class="k jp" lang="ja">共同体</span>
   </div>
   <div class="cur-head">
-    <h2 class="display h-sec" data-rv="up">Five chapters. Ninety minutes. One quiet mind.</h2>
-    <p class="body-lg" data-rv="up">Each chapter is a walk, not a lecture. You arrive at the gate, climb the
-      steps, sit with the lantern, and leave with one thing worth keeping.</p>
+    <h2 class="display h-sec" data-rv="up">Building with people who build.</h2>
+    <p class="body-lg" data-rv="up">CodeBlooded is a coding and hackathon community founded to give builders a place to experiment, collaborate, compete, and turn ideas into working products.</p>
   </div>
-  <div class="cur" id="cur">
-    <div class="les" data-les="0" data-cursor>
-      <span class="k">01</span>
-      <h3>The Hidden Gate<em class="jp">山門</em></h3>
-      <p>Why a gate is a sentence, and what you agree to when you walk under one.</p>
-      <span class="t">14 min</span><i class="bar"></i>
-    </div>
-    <div class="les" data-les="1" data-cursor>
-      <span class="k">02</span>
-      <h3>Borrowed Scenery<em class="jp">借景</em></h3>
-      <p>Shakkei: composing with a mountain you will never own.</p>
-      <span class="t">18 min</span><i class="bar"></i>
-    </div>
-    <div class="les" data-les="2" data-cursor>
-      <span class="k">03</span>
-      <h3>Charred Cypress<em class="jp">焼杉</em></h3>
-      <p>Yakisugi: burning a board black so the weather will let it live.</p>
-      <span class="t">21 min</span><i class="bar"></i>
-    </div>
-    <div class="les" data-les="3" data-cursor>
-      <span class="k">04</span>
-      <h3>Lantern Light<em class="jp">灯籠</em></h3>
-      <p>How a single ember decides the scale of everything around it.</p>
-      <span class="t">17 min</span><i class="bar"></i>
-    </div>
-    <div class="les" data-les="4" data-cursor>
-      <span class="k">05</span>
-      <h3>The Vermilion Moon<em class="jp">朱月</em></h3>
-      <p>Why the moon burns red over the valley, and what the garden does with it.</p>
-      <span class="t">22 min</span><i class="bar"></i>
+
+  <div class="cb-card-wrapper" id="cb-card-perspective" data-rv="up">
+    <div class="cb-card" id="cb-card">
+      <div class="cb-card-left">
+        <div class="cb-tag"><span class="red-dot">●</span> CODEBLOODED</div>
+        <h3 class="cb-title">A community for builders.</h3>
+        <p class="cb-body">A coding and hackathon community where builders experiment, collaborate, compete, and ship working products together.</p>
+        <div class="cb-meta-row">
+          <span>HACKATHONS <i>[00]</i></span>
+          <span class="sep"></span>
+          <span>BUILDERS <i>[00]</i></span>
+          <span class="sep"></span>
+          <span>PROJECTS <i>[00]</i></span>
+        </div>
+        <div class="cb-links-row">
+          <a class="cb-ghost-link" href="https://www.youtube.com/@CodeBlooded99" target="_blank" rel="noopener noreferrer">WATCH ON YOUTUBE ↗</a>
+          <a class="cb-ghost-link" href="https://cb-4-0-theta.vercel.app/" target="_blank" rel="noopener noreferrer">VISIT CODEBLOODED ↗</a>
+        </div>
+      </div>
+      <div class="cb-card-right">
+        <img src="secret-pathways-assets/codeblooded-logo.png" alt="CodeBlooded Logo" class="cb-logo-img" onerror="this.style.display='none'" />
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ chapter IV -->
 <section class="sec fin" id="eternity" data-cam="4">
-  <!-- foreground: the closing horizon: hill, ruins, grass, and the last branch -->
   <div class="fg" data-fg="eternity" aria-hidden="true">
     <span class="fg-el fg-hill" data-fg-in="up">
       <img src="secret-pathways-assets/foreground/png/hill.webp" alt="" width="1774" height="887" loading="lazy" decoding="async">
@@ -1135,19 +1768,103 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
       <img src="secret-pathways-assets/foreground/png/sakura-branch.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
     </span>
   </div>
-  <div class="eyebrow" data-rv="fade">Chapter 04 — Afterlight</div>
-  <h2 class="display" data-rv="up">Afterlight</h2>
-  <p class="body-lg" data-rv="up">The gate does not close behind you. Take the walk whenever the noise
-    gets loud — it is always the same path, and never the same light.</p>
-  <a class="cta" href="#top" data-rv="fade" data-cursor>
-    <i></i><span>Begin the walk</span>
-    <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M3 11 11 3M5 3h6v6" stroke="#dfe7e0" stroke-width="1.3"/></svg>
-  </a>
+  <div class="eyebrow" data-rv="fade">Chapter 04 — CONTACT & CONNECT</div>
+  <h2 class="display" data-rv="up">接続 / LET'S BUILD</h2>
+  <p class="body-lg" data-rv="up">I'm always interested in technical problems, ambitious projects, hackathons, collaborations, and experiments worth building.</p>
+
+  <div class="contact-grid" data-rv="up">
+    <div class="contact-card-wrap">
+      <a class="contact-card" href="mailto:aryanraiavengers@gmail.com" data-cursor>
+        <div class="contact-bg" aria-hidden="true"></div>
+        <div class="contact-kanji-watermark" aria-hidden="true">電子文</div>
+        <div class="contact-inner-frame" aria-hidden="true"></div>
+        <div class="contact-brackets" aria-hidden="true"><span class="br-tl"></span><span class="br-tr"></span><span class="br-bl"></span><span class="br-br"></span></div>
+        <div class="card-rings-anchor" aria-hidden="true">
+          <div class="cb-ring cb-ring-1"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-2"><div class="cb-ring-rot cb-rot-ccw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-3"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="#dfe7e0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div class="contact-content">
+          <span class="k-label">DIRECT MAIL</span>
+          <h3 class="contact-title">EMAIL <em class="jp" lang="ja">電子文</em></h3>
+          <p class="contact-desc">aryanraiavengers@gmail.com</p>
+        </div>
+        <div class="contact-divider" aria-hidden="true"></div>
+        <span class="btn-primary">SEND EMAIL →</span>
+      </a>
+    </div>
+
+    <div class="contact-card-wrap">
+      <a class="contact-card" href="https://in.linkedin.com/in/aryanrai007" target="_blank" rel="noopener noreferrer" data-cursor>
+        <div class="contact-bg" aria-hidden="true"></div>
+        <div class="contact-kanji-watermark" aria-hidden="true">網録</div>
+        <div class="contact-inner-frame" aria-hidden="true"></div>
+        <div class="contact-brackets" aria-hidden="true"><span class="br-tl"></span><span class="br-tr"></span><span class="br-bl"></span><span class="br-br"></span></div>
+        <div class="card-rings-anchor" aria-hidden="true">
+          <div class="cb-ring cb-ring-1"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-2"><div class="cb-ring-rot cb-rot-ccw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-3"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="#dfe7e0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div class="contact-content">
+          <span class="k-label">PROFESSIONAL NETWORK</span>
+          <h3 class="contact-title">LINKEDIN <em class="jp" lang="ja">網録</em></h3>
+          <p class="contact-desc">AI Engineering, Architecture & Collaborations</p>
+        </div>
+        <div class="contact-divider" aria-hidden="true"></div>
+        <span class="btn-secondary">CONNECT ON LINKEDIN →</span>
+      </a>
+    </div>
+
+    <div class="contact-card-wrap">
+      <a class="contact-card" href="https://instagram.com/aryanrai007" target="_blank" rel="noopener noreferrer" data-cursor>
+        <div class="contact-bg" aria-hidden="true"></div>
+        <div class="contact-kanji-watermark" aria-hidden="true">記録</div>
+        <div class="contact-inner-frame" aria-hidden="true"></div>
+        <div class="contact-brackets" aria-hidden="true"><span class="br-tl"></span><span class="br-tr"></span><span class="br-bl"></span><span class="br-br"></span></div>
+        <div class="card-rings-anchor" aria-hidden="true">
+          <div class="cb-ring cb-ring-1"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-2"><div class="cb-ring-rot cb-rot-ccw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-3"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="#dfe7e0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        </div>
+        <div class="contact-content">
+          <span class="k-label">CREATIVE & BUILD JOURNEY</span>
+          <h3 class="contact-title">INSTAGRAM <em class="jp" lang="ja">記録</em></h3>
+          <p class="contact-desc">Behind-the-scenes builds, hackathons & side quests</p>
+        </div>
+        <div class="contact-divider" aria-hidden="true"></div>
+        <span class="btn-secondary">CONNECT ON INSTAGRAM →</span>
+      </a>
+    </div>
+
+    <div class="contact-card-wrap">
+      <a class="contact-card" href="https://github.com/Aryanrai-007" target="_blank" rel="noopener noreferrer" data-cursor>
+        <div class="contact-bg" aria-hidden="true"></div>
+        <div class="contact-kanji-watermark" aria-hidden="true">倉庫</div>
+        <div class="contact-inner-frame" aria-hidden="true"></div>
+        <div class="contact-brackets" aria-hidden="true"><span class="br-tl"></span><span class="br-tr"></span><span class="br-bl"></span><span class="br-br"></span></div>
+        <div class="card-rings-anchor" aria-hidden="true">
+          <div class="cb-ring cb-ring-1"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-2"><div class="cb-ring-rot cb-rot-ccw"><i class="cb-ring-dot"></i></div></div>
+          <div class="cb-ring cb-ring-3"><div class="cb-ring-rot cb-rot-cw"><i class="cb-ring-dot"></i></div></div>
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="#dfe7e0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </div>
+        <div class="contact-content">
+          <span class="k-label">CODE & REPOSITORIES</span>
+          <h3 class="contact-title">GITHUB <em class="jp" lang="ja">倉庫</em></h3>
+          <p class="contact-desc">Open source projects, agents & community code</p>
+        </div>
+        <div class="contact-divider" aria-hidden="true"></div>
+        <span class="btn-secondary">VIEW GITHUB →</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================ footer -->
 <footer class="foot" data-cam="5">
-  <!-- foreground: one planting along the lower edge of the colophon -->
   <div class="fg" data-fg="foot" aria-hidden="true">
     <span class="fg-el fg-bush" data-fg-in="up">
       <img src="secret-pathways-assets/foreground/png/garden-bush.webp" alt="" width="1717" height="876" loading="lazy" decoding="async">
@@ -1165,31 +1882,31 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
         <circle cx="22" cy="25" r="8.6" fill="#e0231c" fill-opacity=".9"/>
         <path d="M5 13h34M9 18.4h26M22 8.5v27" stroke="#dfe7e0" stroke-width="1.5"/>
       </svg>
-      <p>A five-chapter night walk through a Kyoto mountain temple. Three illustrated garden field notes
-        sit inside a live Three.js sanctuary.</p>
+      <p><strong>ARYAN RAI</strong><br>AI Builder · Developer · Founder, CodeBlooded.<br>Building intelligent systems, experimental software, and collaborative communities.</p>
     </div>
-    <div><h4>Chapters</h4><ul>
-      <li><a href="#gate" data-cursor>The Sanmon</a></li>
-      <li><a href="#pathways" data-cursor>Still Gardens</a></li>
-      <li><a href="#lessons" data-cursor>Sacred Craft</a></li>
-      <li><a href="#eternity" data-cursor>Afterlight</a></li>
+    <div><h4>Projects</h4><ul>
+      <li><a href="#lessons" data-cursor>Logicure AI</a></li>
+      <li><a href="#lessons" data-cursor>Mayavihin</a></li>
+      <li><a href="#lessons" data-cursor>SynQro</a></li>
+      <li><a href="#lessons" data-cursor>SatQueryX</a></li>
     </ul></div>
-    <div><h4>Practice</h4><ul>
-      <li><a href="#lessons" data-cursor>Borrowed scenery</a></li>
-      <li><a href="#lessons" data-cursor>Lantern light</a></li>
-      <li><a href="#lessons" data-cursor>Charred cypress</a></li>
-      <li><a href="#lessons" data-cursor>Raked gravel</a></li>
+    <div><h4>Tech Stack</h4><ul>
+      <li><a href="#lessons" data-cursor>LangGraph & AI Agents</a></li>
+      <li><a href="#lessons" data-cursor>Python & Computer Vision</a></li>
+      <li><a href="#lessons" data-cursor>React & TypeScript</a></li>
+      <li><a href="#lessons" data-cursor>Three.js & WebGL</a></li>
     </ul></div>
     <div><h4>Elsewhere</h4><ul>
-      <li><a href="#top" data-cursor>Journal</a></li>
-      <li><a href="#top" data-cursor>Field notes</a></li>
-      <li><a href="#top" data-cursor>Colophon</a></li>
+      <li><a href="https://github.com/Aryanrai-007" target="_blank" rel="noopener noreferrer" data-cursor>GitHub</a></li>
+      <li><a href="https://in.linkedin.com/in/aryanrai007" target="_blank" rel="noopener noreferrer" data-cursor>LinkedIn</a></li>
+      <li><a href="mailto:aryanraiavengers@gmail.com" data-cursor>Email</a></li>
+      <li><a href="#lessons" data-cursor>CodeBlooded</a></li>
     </ul></div>
   </div>
   <div class="foot-base">
-    <span>© 2026 Kage — Kage no Michi</span>
-    <span class="jp">静けさは一つの技である</span>
-    <span>WebGL · Onest · Kyoto</span>
+    <span>© 2026 ARYAN RAI — ALL RIGHTS RESERVED</span>
+    <span class="jp">為すべき事に専念せよ</span>
+    <span>AI BUILDER · DEVELOPER · INDIA</span>
   </div>
 </footer>
 
@@ -2296,7 +3013,7 @@ function initGL() {
      moved the hall by 0.18 of a luminance unit, the fog colour moves it
      properly. And it reaches by distance, so the foreground does not
      follow it down. */
-  scene.fog = new THREE.FogExp2(0x050a0e, 0.0168);
+  scene.fog = new THREE.FogExp2(0x050a0e, 0.007);
   scene.background = new THREE.Color(0x060a0d);
   camera = new THREE.PerspectiveCamera(36, vpW() / vpH(), .35, 220);
   scene.add(camera);
@@ -3022,11 +3739,11 @@ function buildWordmark() {
      Four letters at the old tracking put a 400-pixel cap height across the
      scene; the letters are spaced out instead, which keeps the type edge to
      edge while the caps come back down to the height of the headline block. */
-  const SZ = 320, TRACK = .40, PAD = 26;
+  const SZ = 320, TRACK = .04, PAD = 26;
   const m = cvs(4, 4).getContext('2d');
   m.font = '600 ' + SZ + 'px Wordmark, sans-serif';
   m.textBaseline = 'alphabetic'; m.textAlign = 'left';
-  const word = 'KAGE', gl = [];
+  const word = 'ARYAN', gl = [];
   let pen = 0, ascMax = 0, descMax = 0, xMin = 1e9, xMax = -1e9;
   for (const ch of word) {
     const t = m.measureText(ch);
@@ -4128,11 +4845,12 @@ function layoutWord() {
      as the six-letter word could afford to, decapitates the K and the E. The
      narrow branch is held a little inside the edge because a phone frame has
      no gutter to lose the tracking that trails the final letter into. */
-  const fill = narrow ? .96 : 1.00;
+  const fill = narrow ? .85 : .88;
   const s = (R.x - L.x) * fill / WORD.ink.w;
   /* on a tall frame the mounds sit near mid-height, so the baseline has to
      ride above them or the whole word disappears into the grass */
-  const base = hit(0, narrow ? -.16 : -.585);
+  /* Positioned below AI BUILDER label with ~50px gap and torii gate roof partly visible under letters */
+  const base = hit(0, narrow ? -0.02 : -0.22);
   WORD.group.scale.setScalar(s);
   WORD.group.position.set(-WORD.ink.cx * s, base.y, WORD_Z);
   WORD.rise = WORD.ink.asc * s * 1.25;
@@ -4383,6 +5101,7 @@ function wireNav() {
       activeSec = a;
       dots.forEach((d, i) => d.classList.toggle('on', i === a));
       links.forEach((l, i) => l.classList.toggle('on', linkSec[i] === a));
+      $$('[data-chip]').forEach((chip, i) => chip.classList.toggle('on', i === Math.min(a, 3)));
     }
   }, { passive: true });
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
@@ -4395,9 +5114,17 @@ function wireNav() {
 
 function wireFocus() {
   const set = i => { RIG.focus = i; };
-  $$('[data-chip]').forEach(el => {
+  const chipTargets = ['#gate', '#pathways', '#lessons', '#eternity'];
+  $$('[data-chip]').forEach((el, idx) => {
     el.addEventListener('mouseenter', () => { set(+el.dataset.chip); $$('[data-chip]').forEach(o => o.classList.toggle('on', o === el)); });
-    el.addEventListener('mouseleave', () => { set(-1); el.classList.remove('on'); });
+    el.addEventListener('mouseleave', () => { set(-1); });
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetSec = document.querySelector(chipTargets[idx] || chipTargets[0]);
+      if (targetSec) {
+        scrollTo({ top: targetSec.offsetTop - 40, behavior: REDUCE ? 'auto' : 'smooth' });
+      }
+    });
   });
   $$('[data-les]').forEach(el => {
     el.addEventListener('mouseenter', () => set(+el.dataset.les % 4));
@@ -4414,7 +5141,7 @@ function wireCursor() {
     RIG.tmx = (e.clientX / vpW()) * 2 - 1;
     RIG.tmy = -((e.clientY / vpH()) * 2 - 1);
   }, { passive: true });
-  $$('[data-cursor]').forEach(el => {
+  $$('a, button, [data-cursor], [data-chip], .card, .btn-ghost, .peek').forEach(el => {
     el.addEventListener('mouseenter', () => dot.classList.add('act'));
     el.addEventListener('mouseleave', () => dot.classList.remove('act'));
   });
@@ -4815,6 +5542,217 @@ function start() {
 
 if (document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(boot, 0);
 else addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+<script>
+/* 3D Tilt Interaction for CodeBlooded Card */
+(function setupCbCardTilt() {
+  function initTilt() {
+    const wrapper = document.getElementById('cb-card-perspective');
+    const card = document.getElementById('cb-card');
+    if (!wrapper || !card) return;
+
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || prefersReducedMotion) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isHovered = false;
+    let animationFrameId = null;
+
+    function updateTilt() {
+      if (!isHovered && Math.abs(currentX) < 0.01 && Math.abs(currentY) < 0.01) {
+        currentX = 0;
+        currentY = 0;
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        animationFrameId = null;
+        return;
+      }
+
+      // Spring lerp (stiffness ~300, damping ~50, mass ~0.5)
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+
+      card.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+      animationFrameId = requestAnimationFrame(updateTilt);
+    }
+
+    wrapper.addEventListener('mousemove', (e) => {
+      isHovered = true;
+      const rect = wrapper.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      // Max 5 degrees rotation
+      targetY = x * 10;  // -5deg to +5deg
+      targetX = -y * 10; // -5deg to +5deg
+
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(updateTilt);
+      }
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      isHovered = false;
+      targetX = 0;
+      targetY = 0;
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(updateTilt);
+      }
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initTilt, 0);
+  } else {
+    window.addEventListener('DOMContentLoaded', initTilt);
+  }
+})();
+
+/* 3D Tilt for Contact Cards */
+(function setupContactCardsTilt() {
+  function init() {
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || prefersReducedMotion) return;
+
+    const wraps = document.querySelectorAll('.contact-card-wrap');
+    wraps.forEach(wrap => {
+      const card = wrap.querySelector('.contact-card');
+      if (!card) return;
+
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isHovered = false;
+      let rafId = null;
+
+      function update() {
+        if (!isHovered && Math.abs(currentX) < 0.01 && Math.abs(currentY) < 0.01) {
+          currentX = 0;
+          currentY = 0;
+          card.style.transform = '';
+          rafId = null;
+          return;
+        }
+
+        // Spring lerp
+        currentX += (targetX - currentX) * 0.14;
+        currentY += (targetY - currentY) * 0.14;
+
+        card.style.transform = `rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+        rafId = requestAnimationFrame(update);
+      }
+
+      wrap.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 768) return;
+        isHovered = true;
+        const rect = wrap.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        // Max 8 degrees on each axis
+        targetY = x * 16;
+        targetX = -y * 16;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(update);
+        }
+      });
+
+      wrap.addEventListener('mouseleave', () => {
+        isHovered = false;
+        targetX = 0;
+        targetY = 0;
+        if (!rafId) {
+          rafId = requestAnimationFrame(update);
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(init, 0);
+  } else {
+    window.addEventListener('DOMContentLoaded', init);
+  }
+})();
+
+/* Japanese Ambient Soundtrack Controller */
+(function setupAmbientMusic() {
+  function initAudio() {
+    const audio = document.getElementById('site-ambient-audio');
+    const btn = document.getElementById('audio-toggle');
+    const stateText = document.getElementById('audio-state-text');
+    if (!audio || !btn) return;
+
+    const TARGET_VOLUME = 0.45; // balanced beat & ambience volume
+    let fadeInterval = null;
+    let isPlaying = false;
+
+    function setVolume(vol) {
+      audio.volume = Math.max(0, Math.min(1, vol));
+    }
+
+    function fadeIn() {
+      clearInterval(fadeInterval);
+      audio.play().then(() => {
+        isPlaying = true;
+        btn.classList.add('playing');
+        btn.setAttribute('aria-pressed', 'true');
+        btn.setAttribute('aria-label', 'Pause music');
+        btn.title = 'Mute Music';
+        let vol = audio.volume;
+        fadeInterval = setInterval(() => {
+          vol = Math.min(TARGET_VOLUME, vol + 0.03);
+          setVolume(vol);
+          if (vol >= TARGET_VOLUME) {
+            clearInterval(fadeInterval);
+          }
+        }, 50);
+      }).catch(err => {
+        console.warn('Audio waiting for user gesture:', err);
+      });
+    }
+
+    function fadeOut() {
+      clearInterval(fadeInterval);
+      let vol = audio.volume;
+      fadeInterval = setInterval(() => {
+        vol = Math.max(0, vol - 0.04);
+        setVolume(vol);
+        if (vol <= 0.01) {
+          clearInterval(fadeInterval);
+          audio.pause();
+          isPlaying = false;
+          btn.classList.remove('playing');
+          btn.setAttribute('aria-pressed', 'false');
+          btn.setAttribute('aria-label', 'Play music');
+          btn.title = 'Play Music (音)';
+        }
+      }, 40);
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (isPlaying) {
+        fadeOut();
+      } else {
+        audio.volume = 0;
+        fadeIn();
+      }
+    });
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initAudio, 0);
+  } else {
+    window.addEventListener('DOMContentLoaded', initAudio);
+  }
 })();
 </script>
 </body>

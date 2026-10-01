@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import { KageLandingPage } from "@designcodeio/threeui";
 import "@designcodeio/threeui/style.css";
 import "./styles.css";
+import { PortfolioOverlay } from "./PortfolioOverlay";
 
 function Scene() {
   return (
-    <div className="shader-frame">
+    <div className="shader-frame relative">
       <KageLandingPage
         headingFont="onest"
         bodyFont="onest"
@@ -17,6 +18,7 @@ function Scene() {
         bodySize={17}
         headingLetterSpacing={-0.012}
       />
+      <PortfolioOverlay />
     </div>
   );
 }

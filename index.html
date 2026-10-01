@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#080808" />
     <title>Aryan Rai — Founder + Developer</title>
+    <meta name="description" content="Portfolio website for Aryan Rai, Founder & Developer, featuring interactive 3D elements." />
+    <script>
+      (function () {
+        if (typeof window !== 'undefined') {
+          var origOnError = window.onerror;
+          window.onerror = function (msg) {
+            if (typeof msg === 'string' && msg.indexOf('ResizeObserver') !== -1) {
+              return true;
+            }
+            return origOnError ? origOnError.apply(this, arguments) : false;
+          };
+          window.addEventListener('error', function (e) {
+            if (e.message && e.message.indexOf('ResizeObserver') !== -1) {
+              e.stopImmediatePropagation();
+              e.stopPropagation();
+              if (e.preventDefault) e.preventDefault();
+            }
+          }, true);
+
+          if (window.ResizeObserver) {
+            var NativeResizeObserver = window.ResizeObserver;
+            window.ResizeObserver = function (callback) {
+              var timer = null;
+              return new NativeResizeObserver(function (entries, observer) {
+                if (timer) cancelAnimationFrame(timer);
+                timer = requestAnimationFrame(function () {
+                  callback(entries, observer);
+                });
+              });
+            };
+            window.ResizeObserver.prototype = NativeResizeObserver.prototype;
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

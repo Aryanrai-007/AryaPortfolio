@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <radialGradient id="maya-bg" cx="50%" cy="40%" r="90%">
+      <stop offset="0%" stop-color="#1e0407"/>
+      <stop offset="50%" stop-color="#0e0204"/>
+      <stop offset="100%" stop-color="#030102"/>
+    </radialGradient>
+    <linearGradient id="maya-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#ff3b30"/>
+      <stop offset="100%" stop-color="#e0231c"/>
+    </linearGradient>
+    <linearGradient id="laser-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 59, 48, 0)"/>
+      <stop offset="50%" stop-color="rgba(255, 59, 48, 1)"/>
+      <stop offset="100%" stop-color="rgba(255, 59, 48, 0)"/>
+    </linearGradient>
+    <filter id="crimson-glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Cyber Security Background -->
+  <rect width="1280" height="720" fill="url(#maya-bg)"/>
+
+  <!-- Biometric HUD Grid Overlay -->
+  <path d="M 0 80 H1280 M 0 160 H1280 M 0 240 H1280 M 0 320 H1280 M 0 400 H1280 M 0 480 H1280 M 0 560 H1280 M 0 640 H1280" stroke="rgba(224, 35, 28, 0.08)" stroke-width="1"/>
+  <path d="M 160 0 V720 M 320 0 V720 M 480 0 V720 M 640 0 V720 M 800 0 V720 M 960 0 V720 M 1120 0 V720" stroke="rgba(224, 35, 28, 0.08)" stroke-width="1"/>
+
+  <!-- Top Title & Tagline -->
+  <g transform="translate(45, 35)">
+    <!-- Logo Icon -->
+    <path d="M 0 20 Q 20 0 40 20 T 80 20" fill="none" stroke="#e0231c" stroke-width="4" filter="url(#crimson-glow)"/>
+    <circle cx="40" cy="20" r="6" fill="#ff3b30"/>
+    <text x="50" y="32" fill="url(#maya-logo-grad)" font-family="impact, system-ui, sans-serif" font-size="52" font-weight="900" letter-spacing="6">MAYAVIHIN</text>
+
+    <text x="0" y="62" fill="#e0231c" font-family="monospace" font-size="13" font-weight="700" letter-spacing="4">SEE BEYOND THE ILLUSION · AI DEEPFAKE DETECTION</text>
+    <text x="0" y="86" fill="#a0aab0" font-family="system-ui" font-size="12" font-weight="300">An AI-powered deepfake detection system built to identify manipulated media</text>
+    <text x="0" y="104" fill="#a0aab0" font-family="system-ui" font-size="12" font-weight="300">and help create a more trustworthy digital world.</text>
+
+    <!-- Feature Chips -->
+    <g transform="translate(0, 122)">
+      <rect x="0" y="0" width="88" height="28" rx="4" fill="rgba(224,35,28,0.18)" stroke="#e0231c"/>
+      <text x="44" y="18" fill="#ffffff" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">🔍 DETECT</text>
+
+      <rect x="98" y="0" width="88" height="28" rx="4" fill="rgba(224,35,28,0.18)" stroke="#e0231c"/>
+      <text x="142" y="18" fill="#ffffff" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">⚡ ANALYZE</text>
+
+      <rect x="196" y="0" width="88" height="28" rx="4" fill="rgba(224,35,28,0.18)" stroke="#e0231c"/>
+      <text x="240" y="18" fill="#ffffff" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">🛡️ VERIFY</text>
+
+      <rect x="294" y="0" width="88" height="28" rx="4" fill="rgba(224,35,28,0.18)" stroke="#e0231c"/>
+      <text x="338" y="18" fill="#ffffff" font-family="monospace" font-size="9" text-anchor="middle" font-weight="bold">⚔️ COMBAT</text>
+    </g>
+  </g>
+
+  <!-- Biometric Face Scanner Split Centerpiece -->
+  <g transform="translate(680, 240)">
+    <rect x="-190" y="-140" width="380" height="280" rx="10" fill="rgba(10, 3, 5, 0.9)" stroke="rgba(224, 35, 28, 0.4)" stroke-width="1.5"/>
+
+    <!-- Left Real Section -->
+    <rect x="-180" y="-130" width="175" height="260" fill="rgba(52, 199, 89, 0.04)"/>
+    <ellipse cx="-85" cy="0" rx="65" ry="90" fill="none" stroke="rgba(52, 199, 89, 0.5)" stroke-width="1.5"/>
+    <rect x="-165" y="-115" width="85" height="24" rx="4" fill="rgba(52, 199, 89, 0.2)" stroke="#34c759"/>
+    <text x="-122" y="-99" fill="#34c759" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">REAL: 98.7%</text>
+
+    <!-- Right Deepfake Section -->
+    <rect x="-5" y="-130" width="175" height="260" fill="rgba(255, 59, 48, 0.08)"/>
+    <ellipse cx="85" cy="0" rx="65" ry="90" fill="none" stroke="#ff3b30" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <rect x="65" y="-115" width="105" height="24" rx="4" fill="rgba(255, 59, 48, 0.2)" stroke="#ff3b30"/>
+    <text x="117" y="-99" fill="#ff3b30" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">DEEPFAKE: 87.3%</text>
+
+    <!-- Glitch Artifact Squares -->
+    <rect x="40" y="-30" width="25" height="25" fill="#ff3b30" opacity="0.7"/>
+    <rect x="75" y="20" width="35" height="18" fill="#e0231c" opacity="0.8"/>
+    <rect x="120" y="-10" width="20" height="20" fill="#ff3b30" opacity="0.6"/>
+
+    <!-- Vertical Red Scanning Laser Beam -->
+    <line x1="-2" y1="-140" x2="-2" y2="140" stroke="#ff3b30" stroke-width="3" filter="url(#crimson-glow)"/>
+    <line x1="-2" y1="-140" x2="-2" y2="140" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Bottom Scan Media Dashboard -->
+  <g transform="translate(45, 410)">
+    <rect x="0" y="0" width="540" height="270" rx="12" fill="rgba(12, 3, 5, 0.95)" stroke="rgba(224, 35, 28, 0.4)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="540" height="38" rx="12" fill="rgba(224,35,28,0.12)"/>
+
+    <text x="20" y="24" fill="#ff3b30" font-family="monospace" font-size="12" font-weight="bold">MAYAVIHIN / Media Forensics Pipeline</text>
+
+    <!-- Progress Indicator -->
+    <text x="20" y="68" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600">Deepfake Probability Score</text>
+    <text x="450" y="68" fill="#ff3b30" font-family="monospace" font-size="20" font-weight="bold">87.3%</text>
+
+    <rect x="20" y="82" width="500" height="12" rx="6" fill="#1c0709"/>
+    <rect x="20" y="82" width="436" height="12" rx="6" fill="url(#laser-glow)" filter="url(#crimson-glow)"/>
+
+    <!-- Forensics Checklist -->
+    <rect x="20" y="112" width="500" height="36" rx="4" fill="rgba(255,59,48,0.08)" stroke="rgba(255,59,48,0.25)"/>
+    <text x="35" y="134" fill="#ff3b30" font-family="monospace" font-size="11">• Face synthesis pixel artifacts detected in video frames 142–380</text>
+
+    <rect x="20" y="156" width="500" height="36" rx="4" fill="rgba(255,59,48,0.08)" stroke="rgba(255,59,48,0.25)"/>
+    <text x="35" y="178" fill="#ff3b30" font-family="monospace" font-size="11">• Unnatural eye blink frequency and eye reflection irregularities</text>
+
+    <rect x="20" y="200" width="500" height="36" rx="4" fill="rgba(255,59,48,0.08)" stroke="rgba(255,59,48,0.25)"/>
+    <text x="35" y="222" fill="#ff3b30" font-family="monospace" font-size="11">• Temporal inconsistency &amp; micro-expression boundary distortion</text>
+  </g>
+
+  <!-- Right Forensics Metrics Panel -->
+  <g transform="translate(930, 190)">
+    <rect x="0" y="0" width="305" height="490" rx="12" fill="rgba(12, 3, 5, 0.95)" stroke="rgba(223,231,224,0.12)"/>
+    <text x="20" y="32" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="700" letter-spacing="1">FRAME FORENSICS</text>
+
+    <g transform="translate(20, 52)">
+      <rect x="0" y="0" width="265" height="44" rx="6" fill="#140608"/>
+      <text x="15" y="26" fill="#dfe7e0" font-family="system-ui" font-size="11.5">Facial Inconsistencies</text>
+      <text x="250" y="26" fill="#ff3b30" font-family="monospace" font-size="13" font-weight="bold" text-anchor="end">0.87</text>
+
+      <rect x="0" y="54" width="265" height="44" rx="6" fill="#140608"/>
+      <text x="15" y="80" fill="#dfe7e0" font-family="system-ui" font-size="11.5">Eye Blink Pattern</text>
+      <text x="250" y="80" fill="#ff3b30" font-family="monospace" font-size="13" font-weight="bold" text-anchor="end">0.72</text>
+
+      <rect x="0" y="108" width="265" height="44" rx="6" fill="#140608"/>
+      <text x="15" y="134" fill="#dfe7e0" font-family="system-ui" font-size="11.5">Texture Anomalies</text>
+      <text x="250" y="134" fill="#ff3b30" font-family="monospace" font-size="13" font-weight="bold" text-anchor="end">0.91</text>
+
+      <rect x="0" y="162" width="265" height="44" rx="6" fill="#140608"/>
+      <text x="15" y="188" fill="#dfe7e0" font-family="system-ui" font-size="11.5">Temporal Artifacts</text>
+      <text x="250" y="188" fill="#ff3b30" font-family="monospace" font-size="13" font-weight="bold" text-anchor="end">0.78</text>
+
+      <rect x="0" y="216" width="265" height="44" rx="6" fill="#1c0709" stroke="#ff3b30"/>
+      <text x="15" y="242" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="bold">Overall Score</text>
+      <text x="250" y="242" fill="#ff3b30" font-family="monospace" font-size="14" font-weight="bold" text-anchor="end">0.89</text>
+
+      <!-- Waveform -->
+      <rect x="0" y="275" width="265" height="85" rx="6" fill="#140608" stroke="rgba(224,35,28,0.25)"/>
+      <text x="15" y="295" fill="#78837c" font-family="monospace" font-size="9">TEMPORAL CONSISTENCY</text>
+      <path d="M15 330 Q 45 295, 80 330 T 145 330 T 210 295 T 250 330" fill="none" stroke="#e0231c" stroke-width="2.5" filter="url(#crimson-glow)"/>
+    </g>
+  </g>
+</svg>

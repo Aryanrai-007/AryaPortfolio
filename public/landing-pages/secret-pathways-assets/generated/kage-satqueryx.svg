@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <radialGradient id="sat-bg" cx="50%" cy="80%" r="90%">
+      <stop offset="0%" stop-color="#0a2e47"/>
+      <stop offset="40%" stop-color="#051728"/>
+      <stop offset="100%" stop-color="#010408"/>
+    </radialGradient>
+    <linearGradient id="sat-logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="earth-horizon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(56, 189, 248, 0.85)"/>
+      <stop offset="50%" stop-color="rgba(14, 116, 144, 0.45)"/>
+      <stop offset="100%" stop-color="rgba(1, 4, 8, 0)"/>
+    </linearGradient>
+    <linearGradient id="sat-glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(8, 24, 40, 0.95)"/>
+      <stop offset="100%" stop-color="rgba(3, 10, 18, 0.98)"/>
+    </linearGradient>
+    <filter id="sky-glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep Space Atmosphere -->
+  <rect width="1280" height="720" fill="url(#sat-bg)"/>
+
+  <!-- Earth Curvature Horizon Arc -->
+  <ellipse cx="640" cy="980" rx="1000" ry="480" fill="url(#earth-horizon)"/>
+  <ellipse cx="640" cy="980" rx="1000" ry="480" fill="#041220" opacity="0.6"/>
+
+  <!-- Orbital Grid Lines -->
+  <path d="M 0 80 H1280 M 0 160 H1280 M 0 240 H1280 M 0 320 H1280 M 0 400 H1280 M 0 480 H1280 M 0 560 H1280 M 0 640 H1280" stroke="rgba(56, 189, 248, 0.06)" stroke-width="1"/>
+  <path d="M 160 0 V720 M 320 0 V720 M 480 0 V720 M 640 0 V720 M 800 0 V720 M 960 0 V720 M 1120 0 V720" stroke="rgba(56, 189, 248, 0.06)" stroke-width="1"/>
+
+  <!-- Satellite in Orbit Graphic (Center-Right) -->
+  <g transform="translate(680, 140) rotate(-12)">
+    <rect x="-35" y="-25" width="70" height="50" rx="6" fill="#38bdf8" stroke="#ffffff" stroke-width="2" filter="url(#sky-glow)"/>
+    
+    <!-- Solar Panels Left -->
+    <rect x="-210" y="-18" width="160" height="36" rx="3" fill="#0b2840" stroke="#38bdf8" stroke-width="1.5"/>
+    <line x1="-160" y1="-18" x2="-160" y2="18" stroke="#38bdf8" stroke-width="1"/>
+    <line x1="-110" y1="-18" x2="-110" y2="18" stroke="#38bdf8" stroke-width="1"/>
+
+    <!-- Solar Panels Right -->
+    <rect x="50" y="-18" width="160" height="36" rx="3" fill="#0b2840" stroke="#38bdf8" stroke-width="1.5"/>
+    <line x1="100" y1="-18" x2="100" y2="18" stroke="#38bdf8" stroke-width="1"/>
+    <line x1="150" y1="-18" x2="150" y2="18" stroke="#38bdf8" stroke-width="1"/>
+
+    <!-- Sensor Beam Cone -->
+    <polygon points="0,25 -220,380 220,380" fill="rgba(56, 189, 248, 0.12)" stroke="rgba(56, 189, 248, 0.3)" stroke-dasharray="6 4"/>
+  </g>
+
+  <!-- Top Title Branding Header -->
+  <g transform="translate(45, 35)">
+    <!-- Logo Icon -->
+    <circle cx="20" cy="20" r="18" fill="none" stroke="#38bdf8" stroke-width="3" filter="url(#sky-glow)"/>
+    <path d="M 8 20 Q 20 5 32 20 T 32 35" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="50" y="32" fill="url(#sat-logo-grad)" font-family="system-ui, sans-serif" font-size="50" font-weight="900" letter-spacing="4">SatQueryX</text>
+
+    <text x="0" y="60" fill="#38bdf8" font-family="monospace" font-size="13" font-weight="700" letter-spacing="3">EARTH DATA. HUMAN QUESTIONS.</text>
+    <text x="0" y="85" fill="#a0b0b8" font-family="system-ui" font-size="12" font-weight="300">A geospatial intelligence platform that lets you query, analyze, and understand</text>
+    <text x="0" y="103" fill="#a0b0b8" font-family="system-ui" font-size="12" font-weight="300">satellite data through natural language.</text>
+  </g>
+
+  <!-- Natural Language Query Window (Left Overlay) -->
+  <g transform="translate(45, 180)">
+    <rect x="0" y="0" width="540" height="490" rx="12" fill="url(#sat-glass)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="540" height="42" rx="12" fill="rgba(56, 189, 248, 0.08)"/>
+
+    <text x="25" y="27" fill="#38bdf8" font-family="monospace" font-size="13" font-weight="bold">SatQueryX / Natural Language Intelligence Engine</text>
+
+    <!-- Search Input Box -->
+    <g transform="translate(25, 60)">
+      <rect x="0" y="0" width="490" height="54" rx="8" fill="#091b2c" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="20" y="32" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="500">"Show me deforestation in this region over the last 5 years"</text>
+      <circle cx="460" cy="27" r="16" fill="#0284c7"/>
+      <text x="460" y="32" fill="#ffffff" font-family="system-ui" font-size="14" text-anchor="middle" font-weight="bold">→</text>
+    </g>
+
+    <!-- Map Split Visualizer -->
+    <g transform="translate(25, 134)">
+      <rect x="0" y="0" width="490" height="235" rx="8" fill="#040c17" stroke="rgba(255,255,255,0.1)"/>
+      
+      <!-- Forest imagery left -->
+      <rect x="10" y="10" width="230" height="215" rx="4" fill="#0e2b1a"/>
+      <circle cx="100" cy="110" r="60" fill="#1b4d2e"/>
+      <text x="20" y="30" fill="#30d158" font-family="monospace" font-size="11" font-weight="bold">2019 DENSE FOREST</text>
+
+      <!-- Deforestation highlight right -->
+      <rect x="250" y="10" width="230" height="215" rx="4" fill="#1f1012"/>
+      <circle cx="360" cy="110" r="60" fill="#ff453a" opacity="0.75"/>
+      <text x="260" y="30" fill="#ff453a" font-family="monospace" font-size="11" font-weight="bold">2024 DEFORESTED (RED)</text>
+
+      <!-- Split Slider Handle -->
+      <line x1="245" y1="10" x2="245" y2="225" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="245" cy="118" r="10" fill="#ffffff"/>
+    </g>
+
+    <!-- Bottom Toolbar -->
+    <g transform="translate(25, 395)">
+      <rect x="0" y="0" width="115" height="65" rx="6" fill="#0a1d30"/>
+      <text x="15" y="25" fill="#38bdf8" font-family="monospace" font-size="9" font-weight="bold">NATURAL QUERY</text>
+      <text x="15" y="44" fill="#a0b0b8" font-family="system-ui" font-size="10">LLM Prompting</text>
+
+      <rect x="125" y="0" width="115" height="65" rx="6" fill="#0a1d30"/>
+      <text x="140" y="25" fill="#38bdf8" font-family="monospace" font-size="9" font-weight="bold">SATELLITE DATA</text>
+      <text x="140" y="44" fill="#a0b0b8" font-family="system-ui" font-size="10">Multi-source</text>
+
+      <rect x="250" y="0" width="115" height="65" rx="6" fill="#0a1d30"/>
+      <text x="265" y="25" fill="#38bdf8" font-family="monospace" font-size="9" font-weight="bold">VISUAL ANALYTICS</text>
+      <text x="265" y="44" fill="#a0b0b8" font-family="system-ui" font-size="10">Spectral map</text>
+
+      <rect x="375" y="0" width="115" height="65" rx="6" fill="#0a1d30"/>
+      <text x="390" y="25" fill="#38bdf8" font-family="monospace" font-size="9" font-weight="bold">REAL INSIGHTS</text>
+      <text x="390" y="44" fill="#a0b0b8" font-family="system-ui" font-size="10">Actionable</text>
+    </g>
+  </g>
+
+  <!-- Right Side Layering Stack Panel -->
+  <g transform="translate(900, 180)">
+    <rect x="0" y="0" width="335" height="490" rx="12" fill="url(#sat-glass)" stroke="rgba(223, 231, 224, 0.12)"/>
+    <text x="25" y="35" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="700" letter-spacing="1">ISOLATED OBSERVATION LAYERS</text>
+
+    <g transform="translate(25, 60)">
+      <rect x="0" y="0" width="285" height="80" rx="6" fill="#091f30" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="20" y="32" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="bold">SATELLITE IMAGERY (RGB)</text>
+      <text x="20" y="52" fill="#78837c" font-family="monospace" font-size="10">High-resolution natural color observation</text>
+
+      <rect x="0" y="98" width="285" height="80" rx="6" fill="#091f30" stroke="#30d158" stroke-width="1.5"/>
+      <text x="20" y="130" fill="#30d158" font-family="system-ui" font-size="12" font-weight="bold">VEGETATION INDEX (NDVI)</text>
+      <text x="20" y="150" fill="#78837c" font-family="monospace" font-size="10">Forest cover &amp; agricultural health</text>
+
+      <rect x="0" y="196" width="285" height="80" rx="6" fill="#091f30" stroke="#ff9f0a" stroke-width="1.5"/>
+      <text x="20" y="228" fill="#ff9f0a" font-family="system-ui" font-size="12" font-weight="bold">ELEVATION MODEL (DEM)</text>
+      <text x="20" y="248" fill="#78837c" font-family="monospace" font-size="10">3D terrain topography &amp; watershed</text>
+
+      <rect x="0" y="294" width="285" height="80" rx="6" fill="#091f30" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="20" y="326" fill="#38bdf8" font-family="system-ui" font-size="12" font-weight="bold">WATER DETECTION ANALYSIS</text>
+      <text x="20" y="346" fill="#78837c" font-family="monospace" font-size="10">Flood tracking &amp; water body volume</text>
+    </g>
+
+    <text x="167" y="460" fill="#38bdf8" font-family="monospace" font-size="10" text-anchor="middle">TURNING EARTH DATA INTO ACTIONABLE KNOWLEDGE</text>
+  </g>
+</svg>
